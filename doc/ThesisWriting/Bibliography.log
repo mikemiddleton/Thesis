@@ -1,0 +1,77 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdftex 2016.4.8)  25 JUL 2016 14:00
+entering extended mode
+**C:/Users/mynam/Dropbox/NAU/WirelessLab/Thesis/ThesisWriting/Bibliography.bib
+(C:/Users/mynam/Dropbox/NAU/WirelessLab/Thesis/ThesisWriting/Bibliography.bib
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no © in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no ¼ in font cmr10!
+
+Overfull \hbox (10.98196pt too wide) in paragraph at lines 95--103
+\tenrm year=2009, title=Software-based re-mote code at-tes-ta-tion in wire-less
+ sen-sor net-work, book-ti-tle=Global Telecom-|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\tenrm y
+.\kern-0.27779
+.\tenrm e
+.\tenrm a
+.\tenrm r
+.etc.
+
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no ¶ in font cmr10!
+[1{C:/Users/mynam/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no ¤ in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no ¶ in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no ¤ in font cmr10!
+
+Overfull \hbox (1.32936pt too wide) in paragraph at lines 169--178
+[]\tenrm @articleJardak, au-thor=Christine Jar-dak and Petri Mh-nen and Janne R
+i-ihi-jrvi, year=2014, ti-tle=Spatial|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm a
+.\tenrm r
+.\tenrm t
+.etc.
+
+
+Overfull \hbox (1.07927pt too wide) in paragraph at lines 189--198
+[]\tenrm @articleKang, author=Yong-Shin Kang and Il-Ha Park and Jong-tae Rhee a
+nd Yong-Han Lee, year=2016,|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm a
+.\tenrm r
+.\tenrm t
+.etc.
+
+
+Overfull \hbox (4.41266pt too wide) in paragraph at lines 226--234
+[]\tenrm @inproceedingsVaidehi, au-thor=V. Vaidehi and D. Sharmila Devi, year=2
+011, ti-tle=Distributed database|
+
+\hbox(6.94444+1.94444)x469.75499, glue set - 1.0
+.\hbox(0.0+0.0)x20.0
+.\tenrm @
+.\tenrm i
+.\tenrm n
+.\tenrm p
+.etc.
+
+)
+*
+! Emergency stop.
+<*> ...ssLab/Thesis/ThesisWriting/Bibliography.bib
+                                                  
+End of file on the terminal!
+
+!  ==> Fatal error occurred, no output PDF file produced!

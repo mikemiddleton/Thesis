@@ -1,0 +1,204 @@
+%% ----------------------------------------------------------------
+%% Thesis.tex -- MAIN FILE (the one that you compile with LaTeX)
+%% ---------------------------------------------------------------- 
+
+% Set up the document
+\documentclass[a4paper, 12pt, oneside]{Thesis}  % Use the "Thesis" style, based on the ECS Thesis style by Steve Gunn
+\graphicspath{Figures/}  % Location of the graphics files (set up for graphics to be in PDF format)
+
+% Include any extra LaTeX packages required
+\usepackage[square, numbers, comma, sort&compress]{natbib}  % Use the "Natbib" style for the references in the Bibliography
+%\usepackage{biblatex}
+\usepackage{verbatim}  % Needed for the "comment" environment to make LaTeX comments
+\usepackage{vector}  % Allows "\bvec{}" and "\buvec{}" for "blackboard" style bold vectors in maths
+\usepackage{graphics}
+\usepackage{multirow}
+\usepackage{epsfig}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{slashbox}
+\usepackage{textcomp}
+\usepackage[subfigure]{tocloft}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames]{color} 		% Custom colors
+\usepackage{notoccite}
+\hypersetup{urlcolor=blue, colorlinks=true}  % Colours hyperlinks in blue, but this can be distracting if there are many links.
+
+\renewcommand{\cftchapfont}{\bfseries}
+\renewcommand{\cftchappagefont}{\bfseries}
+\renewcommand{\cftchappresnum}{Chapter }
+\renewcommand{\cftchapaftersnum}{:}
+\renewcommand{\cftchapnumwidth}{6em}
+\newcommand{\sub}[1]{\raisebox{-.4ex}{\scriptsize #1}}
+
+\DeclareFontFamily{U}{euc}{}% I chose euc because the chart is called Euler cursive
+\DeclareFontShape{U}{euc}{m}{n}{<-6>eurm5<6-8>eurm7<8->eurm10}{}%
+\DeclareSymbolFont{AMSc}{U}{euc}{m}{n} % I chose AMSc because AMSa and AMSb are defined in the amsfonts-package
+\DeclareMathSymbol{\umu}{\mathord}{AMSc}{"16} 
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand*{\argminl}{\argmin\limits}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%						Code configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} % Color used for comments
+\lstloadlanguages{C} 						% Load C syntax for listings, for a list of other languages supported see: ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\lstset{language=C, 							% Use C in this example
+        frame=single, 							% Single frame around code
+        basicstyle=\scriptsize\ttfamily\singlespacing,				% Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, 		% Perl functions bold and blue
+        keywordstyle=[2]\color{Purple},			% Perl function arguments purple
+        keywordstyle=[3]\color{Blue}\underbar,  % Custom functions underlined and blue
+        identifierstyle=, % Nothing special about identifiers                                         
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\scriptsize, % Comments small dark green courier font
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=3, % 3 spaces per tab
+        %
+        % Put standard Perl functions not included in the default language here
+        morekeywords={rand},
+        %
+        % Put Perl function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        morecomment=[l][\color{Blue}]{...}, % Line continuation (...) like blue comment
+}
+
+% Creates a new command to include a C script, the first parameter is the filename of the script (without .c), the second parameter is the caption
+\newcommand{\cscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1.c}
+\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%						 End code configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% ----------------------------------------------------------------
+\begin{document}
+\frontmatter	  % Begin Roman style (i, ii, iii, iv...) page numbering
+\setstretch{2}
+% Set up the Title Page
+\title  {SPECIFYING SENSOR/ACTUATOR NETWORK EXECUTION: A RELATIONAL DATABASE APPROACH}
+\authors  {\texorpdfstring
+            {{Michael Middleton}}
+            {Michael Middleton}
+            }
+%\addresses  {\groupname\\\deptname\\\univname}  % Do not change this here, instead these must be set in the "Thesis.cls" file, please look through it instead
+%\date       {\today}
+%\subject    {}
+%\keywords   {}
+
+\maketitle
+%% ----------------------------------------------------------------
+
+\setstretch{2}  % It is better to have smaller font and larger line spacing than the other way round
+
+% Define the page headers using the FancyHdr package and set up for one-sided printing
+\fancyhead{}  % Clears all page headers and footers
+\rhead{\thepage}  % Sets the right side header to show the page number
+\lhead{}  % Clears the left side page header
+\pagestyle{fancy}  % Finally, use the "fancy" page style to implement the FancyHdr headers
+
+\addtocounter{page}{1}
+%% ----------------------------------------------------------------
+
+% The Abstract Page
+\addtotoc{Abstract}  % Add the "Abstract" page entry to the Contents
+\abstract{
+\addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
+
+Wireless sensor networks (WSN) provide a robust and versatile solution to distributed low-power computing over a range of diverse network topographies. One-way data aggregation from network to data center is traditionally the fundamental data acquisition feature for many wireless sensor networks. With the increasing prevalence of IoT devices and the large number of WSN application possibilities, network and nodal reconfiguration to suit changing environmental conditions and sensing needs via outbound commands is not only an attractive feature, but in many cases a growing necessity. The work of this thesis comprises the implementation of a web-based application allowing end users to identify and reconfigure sets or subsets of WSN nodes based on real-time network state information. This end-to-end network reconfiguration procedure relies upon an existing two-way cyber-infrastructure and a relational database to store and track network state information. Additionally, the streaming middleware solution, integral to this cyber-infrastructure, provides a tracking mechanism for network reconfiguration commands. This tracking ability along with the reconfiguration mechanisms will not only allow end-users to enact behavioral network changes, but also provide the foundation for virtualized users to autonomously monitor and enact behavioral changes to the network in response to changing network or environmental conditions. The specific aim of this work is the design and implementation of the mechanisms upon which these features will be built.
+}
+\fancyhead{}
+\clearpage  % Abstract ended, start a new page
+%% ----------------------------------------------------------------
+
+% The Acknowledgements page, for thanking everyone
+\acknowledgements{
+\addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
+
+List acknowledgments here
+
+}
+\clearpage  % End of the Acknowledgements
+
+
+
+%% ----------------------------------------------------------------
+
+\pagestyle{fancy}  %The page style headers have been "empty" all this time, now use the "fancy" headers as defined before to bring them back
+
+
+%% ----------------------------------------------------------------
+\lhead{\emph{Contents}}  % Set the left side page header to "Contents"
+\tableofcontents  % Write out the Table of Contents
+
+\newpage
+%% ----------------------------------------------------------------
+\lhead{\emph{List of Tables}}  % Set the left side page header to "List of Tables"
+\listoftables  % Write out the List of Tables
+
+\newpage
+%% ----------------------------------------------------------------
+\lhead{\emph{List of Figures}}  % Set the left side page header to "List if Figures"
+\listoffigures  % Write out the List of Figures
+
+
+%% ----------------------------------------------------------------
+\clearpage  % Start a new page
+
+\pagestyle{empty}  % Page style needs to be empty for this page
+\dedicatory{List dedication here}
+
+\addtocontents{toc}{\vspace{2em}}  % Add a gap in the Contents, for aesthetics
+
+
+%% ----------------------------------------------------------------
+\mainmatter	  % Begin normal, numeric (1,2,3...) page numbering
+\pagestyle{fancy}  % Return the page headers back to the "fancy" style
+
+% Include the chapters of the thesis, as separate files
+% Just uncomment the lines as you write the chapters
+
+\input{./Chapters/Chapter1} % Introduction
+
+\input{./Chapters/Chapter2} % Literature Review
+
+\input{./Chapters/Chapter3} % WSN Platform
+
+\input{./Chapters/Chapter4} % Modeling
+
+%\input{./Chapters/Chapter5} % Minimization
+
+%\input{./Chapters/Chapter6} % Results and Discussion
+
+%\input{./Chapters/Chapter7} % Conclusion
+
+%% ----------------------------------------------------------------
+% Now begin the Appendices, including them as separate files
+
+
+\clearpage
+\backmatter
+\addtocontents{toc}{\vspace{2em}}  % Add a gap in the Contents, for aesthetics
+
+\appendix
+\input{./Chapters/Appendix}
+
+%% ----------------------------------------------------------------
+\nocite{*}
+%\label{Bibliography}
+%\lhead{\emph{Bibliography}}  % Change the left side page header to "Bibliography"
+%\bibliographystyle{IEEEtrans}  % Use the "unsrtnat" BibTeX style for formatting the Bibliography
+\bibliographystyle{ieeetr}
+\bibliography{Bibliography}  % The references (bibliography) information are stored in the file named "Bibliography.bib"
+
+
+\end{document}  % The End
+%% ----------------------------------------------------------------

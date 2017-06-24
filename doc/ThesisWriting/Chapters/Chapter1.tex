@@ -1,0 +1,64 @@
+% Chapter 1
+
+\chapter{Introduction} % Write in your own chapter title
+\label{Chapter 1}
+\lhead{} % Write in your own chapter title to set the page header
+
+\section{Wireless Sensor Networks}
+
+Transducers can be used to sense radiation and measure soil moisture, temperature, and other physical phenomena. Transducers are often built into devices referred to as wireless sensors, with wireless networking capabilities. Wireless sensor networks (WSNs) use wireless networking technologies to enable groups of wireless sensors to communicate with each other and connect to the Internet. Low power distributed computing, intelligent wireless networking, and sophisticated data management form the core of WSN technology. The integration of these technologies are enabling the development of modern applications like the Internet of Things (IoT).\\ 
+
+Some collections of wirelessly networked sensing devices form a cyber-physical system. A cyber-physical system is one where computation and networking processes operate in conjunction with a physical system, such as a smart garden or an advanced industrial process. While there are a broad range of implementations and platforms that fall under the umbrella of WSN, they all have a particular set of design restrictions and offer fundamental baseline features. WSN devices generally lack sophisticated processing power, run on a finite power supply (typically batteries), and use a diverse range of network topologies. Due to the power constraints of many wireless sensor nodes, transmission ranges are often quite short, and networks require a base station with greater networking capabilities, enabling access to the rest of the Internet; this is  typically accomplished via a cellular or satellite connection. 
+
+WSNs allow researchers, scientists, and analysts to embed transducers into the environment which manage and perform sampling duties on a diverse range of sensors. Additionally, actuators allow for changes to be imposed upon the environment at given scheduled times or in reaction to certain events. In a WSN, the data collected from the various devices is aggregated and routed through the network to a base station where it is accessible to applications or archived at a data center. Depending on the diversity of the data types, the sophistication of the sensors, or the high-level data management schema, there is a diverse range of operations such as data conversions, checksum error detection, and stream creation that must be performed. These operations, data conversion for instance, might be performed at the sensor node, at the base station, or even at the data center. 
+
+\subsection{Difficulties of Network Reconfiguration}
+
+The continued persistent functionality of a WSN requires that it have a certain level of autonomy. Basic WSN operation requires data aggregation from the nodes at the data center by whatever infrastructure is in place. There is also, however, a need for direct network interaction allowing a user to observe and enact behavioral changes within subsets of a network or the network as a whole. Researchers rely upon WSN to provide the means for extended monitoring or experimentation that span lengthy periods of time; changing circumstances may require for users to change the configuration of WSN devices based upon changing experimental needs or environmental conditions. For example, if a researcher studying the effects of soil moisture at a particular geographic location predicts a rain event, he or she might want to reconfigure the behavior of the WSN devices to gather soil moisture readings at an increased sampling rate to achieve greater data resolution.\\ 
+
+There are a number of different design implementations for heterogeneous wireless sensor network control and reorganization, such as TinyOS and MagnetOS. These employ systems that allow modification of the sensors' behavior. It can be difficult to perform reconfigurations at the device level when WSNs are in remote or difficult to access locations such as rural areas or dangerous industrial facilities. Providing a user interface for researchers which accommodates making such modifications would expand the functionality of the network in potentially new and unique ways.
+
+\section{Statement of the Problem}
+
+When physical access to a device is needed to perform device or network modification, this can place a significant burden on researchers by necessitating a large number of hours of travel time to remote locations or the traversal of dangerous environments to access the devices, such as in an industrial setting. The wireless nature of WSN systems offers a natural mechanism for users to communicate with the devices remotely.\\ 
+
+Enabling users to remotely change the behavior of WSN nodes would allow researchers to rapidly tailor the behavior of the network to changing needs or environmental conditions. The creation of a web-based application which provides users with real-time network state information and the ability to enact changes would significantly reduce the amount of travel time, increase the amount of control a user has to rapidly reconfigure WSN nodes, and allow the mechanisms necessary to automate the reconfiguration process.\\ 
+
+An agent is a software entity that can utilize the same network device reconfiguration capabilities that a person would have, though it's actions can be defined by software that can respond to changes in network conditions. An example is an agent which monitors the power consumption of WSN devices in the network and reconfigures the devices to conserve energy. For example, if a specific WSN node is low on battery voltage, an agent might send the node commands that lower a transducer sampling rate.
+
+The specific objectives of this work are as follows:
+
+\begin{itemize}
+	\item Implementation of an application which allows users to remotely identify and select sets of WSN nodes based on static and dynamic search criteria;
+	\item Implementation of an interface allowing users to enact behavioral changes in individual or groups of nodes; and
+	\item Generalization of the reconfiguration software such that agents can monitor and reconfigure network nodes.
+\end{itemize}
+
+
+\textbf{This thesis presents a system for both users and automated agents to reconfigure arbitrary subsets of nodes in large, complex collections of WSNs using (1) a database paradigm for selection of node subsets based on both static and dynamic data, and (2) an interface that allows both users and automated agents to identify subsets and issue valid reconfiguration commands.}
+
+\section{Summary of Contents}
+
+% discussion of chapter 2
+
+Chapter 2 summarizes the academic literature discussing reconfiguration of sensor networks and the various platforms where reconfiguration has been implemented. This chapter also discusses the challenges associated with reconfiguring wireless sensor networks and the design features that researchers have utilized to overcome these challenges.
+
+% discussion of chapter 3
+
+Chapter 3 discusses the WSN platform and cyber-infrastructure named WiSARDNet. 
+
+% discussion of chapter 4
+
+Chapter 4 explains the end to end network reconfiguration software and execution via a relational database to track network state information.
+
+% discussion of chapter 5
+
+In chapter 5, node reconfiguration use cases, software validation, and user access control are discussed in detail.
+
+% discussion of chapter 6
+
+In chapter 6, node reconfiguration procedures and automated users are discussed in detail.
+
+% discussion of chapter 7
+
+The final chapter summarizes the results of the research and software implementation. Additionally, opportunities for future work are discussed, followed by conclusions.
