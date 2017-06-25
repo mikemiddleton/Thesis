@@ -193,6 +193,20 @@ public class SegaDB{
 		return resultSet;
 	}
 	
+	/**
+	 * obtains a site based on its id 
+	 * @return resultSet
+	 * @throws SQLException
+	 * @throws SegaWebException
+	 */
+	public ResultSet getSiteByName(String name) throws SQLException, SegaWebException{
+		String statement = "SELECT * FROM site WHERE site.site_id='" + name + "'"; // this is the query for the segav1_5 database
+		ResultSet resultSet = conn.executeStatement(statement);
+		if(resultSet == null)
+			return null;
+		return resultSet;
+	}
+	
 	/* 
 	 * returns a ResultSet of all states with registered garden locations
 	 */
@@ -340,6 +354,46 @@ public class SegaDB{
 	}
 	
 	/*
+	 * returns a result set of all active deployments that a particular user has either write or full access to
+	 */
+	public ResultSet getAllActiveDeploymentsForPerson(Person p) throws SegaWebException{
+		String statement = 
+				"SELECT deployment.*" +
+				"FROM person" +
+					"LEFT JOIN permission_entity ON person.person_id=permission_entity.person_id" +
+					"LEFT JOIN permission ON permission_entity.permission_entity_id=permission.permission_entity_id" +
+					"LEFT JOIN permission_resource ON permission.permission_resource_id=permission_resource.permission_resource_id" +
+					"LEFT JOIN deployment ON permission_resource.deploy_id=deployment.deploy_id" +
+				"WHERE deployment.active='TRUE' AND permission.access_level!='' AND permission.access_level!='read' AND person.person_id='" + p.getPerson_id() +"'" +
+				"ORDER BY deployment.deploy_id asc;";
+		System.out.println(statement);
+		ResultSet resultSet = conn.executeStatement(statement);
+		if(resultSet == null)
+			return null;
+		return resultSet;
+	}
+	
+	/*
+	 * returns a result set of all persons who have write or full access to a specified deployment
+	 */
+	public ResultSet getAllPersonForDeployment(Deployment d) throws SegaWebException{
+		String statement = 
+				"SELECT person.*" +
+				"FROM person" +
+					"LEFT JOIN permission_entity ON person.person_id=permission_entity.person_id" +
+					"LEFT JOIN permission ON permission_entity.permission_entity_id=permission.permission_entity_id" +
+					"LEFT JOIN permission_resource ON permission.permission_resource_id=permission_resource.permission_resource_id" +
+					"LEFT JOIN deployment on permission_resource.deploy_id=deployment.deploy_id" +
+				"WHERE permission.access_level!='' AND permission.access_level!='read' AND deployment.deploy_id = '" + d.getDeploymentID() + "'" +
+				"ORDER BY person.person_id asc;";
+		System.out.println(statement);
+		ResultSet resultSet = conn.executeStatement(statement);
+		if(resultSet == null)
+			return null;
+		return resultSet;
+	}
+	
+	/*
 	 * returns a result set of all sites
 	 */
 	public ResultSet getAllSites() throws SegaWebException{
@@ -358,5 +412,25 @@ public class SegaDB{
 	 */
 	public ResultSet executeStatement(String statement) throws SegaWebException{
 		return conn.executeStatement(statement);
+	}
+	
+	/*
+	 * returns a result set of experiments that a particular wisard is a part of
+	 */
+	public ResultSet getWisardExperiments(Wisard w) throws SegaWebException{
+		String statement = 
+				"SELECT experiment.*" + 
+				"FROM experiment" +
+					"LEFT JOIN experiment_resource ON experiment_resource.experiment_id=experiment.experiment_id" +
+					"LEFT JOIN deployment ON experiment_resource.deploy_id=deployment.deploy_id" +
+					"LEFT JOIN device ON deployment.device_id=device.device_id" +
+					"LEFT JOIN devicetype ON device.devicetype_id=devicetype.devicetype_id" +
+				"WHERE devicetype.name='CP' AND deployment.active='TRUE' AND deployment.relative_id='" + w.getNetwork_id() + "'" +
+				"ORDER BY experiment.experiment_id asc;";
+		System.out.println(statement);
+		ResultSet resultSet = conn.executeStatement(statement);
+		if(resultSet == null)
+			return null;
+		return resultSet;
 	}
 }

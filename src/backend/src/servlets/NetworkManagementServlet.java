@@ -28,16 +28,19 @@ import org.postgresql.util.PSQLException;
 
 // include sega classes
 import edu.nau.rtisnl.SegaWebException;
+import helpers.IValidationIssue;
 import helpers.KeyValueObject;
 import helpers.SP;
 import helpers.SegaDB;
 import helpers.SmartList;
+import helpers.ValidationIssue;
 import helpers.Wisard;
 import helpers.SmartList;
 //import utilities.ConnectionHandler;
 import utilities.SegaLogger;
 import utilities.ArrayUtilities;
 import utilities.CRC;
+import utilities.NetResetCommand;
 import utilities.PacketGenerator;
 
 /**
@@ -405,7 +408,33 @@ public class NetworkManagementServlet extends HttpServlet {
 				// 3. take hex value of relative id and add to command payload
 				// 4. make a message from payload
 				// 5. connect, publish message, disconnect
-				
+
+				if(w.getSite().equals("RTISNL-EXP249a-12")){
+					// create new 
+					NetResetCommand cmd = new NetResetCommand(w, 0);
+					SmartList<ValidationIssue> issues = cmd.validate();
+					SmartList<ValidationIssue> errors = issues != null ? issues.where((ValidationIssue i) -> i.getType() == ValidationIssue.Type.ERROR):null;
+					SmartList<ValidationIssue> warnings = issues != null ? issues.where((ValidationIssue i) -> i.getType() == ValidationIssue.Type.WARNING):null;
+					// TO DO - replace with validator
+					if(warnings == null || warnings.size() == 0){
+						warnings.stream().map((ValidationIssue issue) -> issue.getMessage()).forEach(
+								(String warning) -> log.write(warning)
+						);
+					}
+					if(errors == null || errors.size() == 0){
+						errors.stream().map((ValidationIssue issue) -> issue.getMessage()).forEach(
+								(String error) -> log.write(error)
+						);
+					}
+					else{
+						cmd.runCommand();
+					}
+						
+				}
+				else{
+					log.write("did not send command to wis " + w.getNetwork_id() + " at " + w.getSite() + " because site unavailable");
+				}
+				/*
 				String pubTopic = "exp249a-12/cmd/siccs106-01";
 				int qos = 2;
 				String broker = "tcp://exp249a-12.egr.nau.edu:1883";
@@ -460,7 +489,7 @@ public class NetworkManagementServlet extends HttpServlet {
 				
 				else{
 					log.write("did not send command to wis " + w.getNetwork_id() + " at " + w.getSite() + " because site unavailable");
-				}
+				}*/
 			}
 			// --- end command portion ---
 			

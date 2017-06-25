@@ -113,6 +113,31 @@ public class Wisard implements Serializable{
 		return site;
 	}
 	
+	public Site getSiteObject() throws SQLException, SegaWebException, NullPointerException, IOException{
+		SegaDB sdb = new SegaDB();
+		sdb.init();
+		ResultSet rs = sdb.getSiteByName(site);
+		sdb.disconnect();
+		rs.next();
+		Site s = new Site(rs);
+		return s;
+	}
+	
+	/*
+	 * get all experiments
+	 */
+	public SmartList<Experiment> getExperiments() throws NullPointerException, IOException, SegaWebException, SQLException{
+		SegaDB sdb = new SegaDB();
+		sdb.init();
+		ResultSet rs = sdb.getWisardExperiments(this);
+		SmartList<Experiment> experiments = new SmartList<Experiment>();
+		while(rs.next()){
+			Experiment e = new Experiment(rs);
+			experiments.add(e);
+		}
+		return experiments;
+	}
+	
 	/*
 	public void setBroker(String b){
 		broker = b;

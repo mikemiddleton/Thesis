@@ -15,7 +15,7 @@ import helpers.Wisard;
 /*
  * class description for Deployment objects
  */
-public class Deployment {
+public class Deployment implements IPermissionResource{
 	private int deploy_id;
 	private int device_id;
 	private int plot_id;
@@ -43,6 +43,21 @@ public class Deployment {
 		this.setLatLong((PGpoint)rs.getObject("lat_long"));
 		this.setVersion(rs.getString("version"));
 	}
+	
+	@Override
+	public SmartList<Person> getAllPersons() throws SQLException, SegaWebException, NullPointerException, IOException {
+		// new db helper
+		SegaDB sdb = new SegaDB();
+		sdb.init();
+		ResultSet rs = sdb.getAllPersonForDeployment(this);
+		sdb.disconnect();
+		SmartList<Person> persons = new SmartList<Person>();
+		while(rs.next()){
+			persons.add(new Person(rs));
+		}	
+		
+		return persons;
+	} 
 	
 	/* deployment id setter */
 	public void setDeploymentID(int deploy_id){
@@ -183,5 +198,5 @@ public class Deployment {
 			deployments.add(new Deployment(rs));
 		}
 		return deployments;
-	} 
+	}
 }
