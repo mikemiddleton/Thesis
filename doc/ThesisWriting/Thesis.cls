@@ -199,7 +199,7 @@
       {\normalsize in Engineering \par}
       \vskip 0.75cm
       {\normalsize \text{\UNIVNAME}\par}
-      {\normalsize\text{May 2016}\\} 
+      {\normalsize\text{August 2017}\\} 
      % \end{doublespace} 
       \vskip 0.75cm
       \normalsize Approved:
@@ -238,7 +238,7 @@
    \begin{center}
      {\normalsize{{ABSTRACT}} \par}
      \vskip 1cm
-     {\normalsize {SPECIFYING SENSOR/ACTUATOR NETWORK EXECUTION: A RELATIONAL DATABASE APPROACH} \par}
+     {\normalsize {LARGE-SCALE SENSOR/ACTUATOR NETWORKS AS DATABASES OF DYNAMIC HETEROGENEOUS ACTIONS} \par}
     \vskip 1cm
     {\normalsize {MICHAEL MIDDLETON}}
     \vskip 1cm

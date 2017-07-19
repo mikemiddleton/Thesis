@@ -3,10 +3,17 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Cyberinfrastructure hardware and software component hierarchy\relax }}{17}{figure.caption.14}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Device Relationship Structure\relax }}{24}{figure.caption.20}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Deployment Relationship Structure\relax }}{25}{figure.caption.21}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces A visual showing each device (background) and its active deployment (foreground) and how the deployments are connected\relax }}{25}{figure.caption.21}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces A visual representation of the software architecture that organizes the different software modules\relax }}{37}{figure.caption.43}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces The organizational structure of the manner in which Apache Tomcat facilitates the interaction between the web browser and the servlet classes which provide critical application features\relax }}{39}{figure.caption.45}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces A visual representation of the PSQL tables and their references which support the user access control paradigm\relax }}{41}{figure.caption.48}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces A visual of the database abstraction which simplifies the creation of WiSARD data objects\relax }}{42}{figure.caption.50}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces WiSARD abstraction and corresponding database representation\relax }}{31}{figure.caption.32}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces The modules being added to the WiSARDNet cyberinfrastructure\relax }}{36}{figure.caption.42}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces A flow diagram showing each action the WiSARD Browser Module makes\relax }}{39}{figure.caption.46}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces A depiction of the way in which the servlet relays information between the user interface and the core software modules \relax }}{40}{figure.caption.48}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces A flow diagram showing each action the Command Generation Module makes\relax }}{45}{figure.caption.52}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces A flow diagram showing each action the Validation Module makes\relax }}{47}{figure.caption.54}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces A diagram that shows how the three new Permission tables are used to create a user access control schema\relax }}{50}{figure.caption.57}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces A class diagram showing how new commands inherit from their parent class, yet implement their own validate method\relax }}{52}{figure.caption.59}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces A class diagram showing the composition of the agents and their relevant classes\relax }}{57}{figure.caption.64}
 \addvspace {10\p@ }

@@ -7,7 +7,7 @@
 % 4.1 Overview
 % - Introduce the sections and the purpose/content of each section
 \section{Overview}
-This chapter discusses the software developed in this thesis. First, this chapter discusses the procedures involved in network reconfiguration and the features required to achieve that goal. Next, the features are discussed in terms of the software functionality that needs to be implemented. Finally, the chapter discusses how the different functionality is grouped into software modules. The specifics of how each module works is described in Chapter 5.
+This chapter discusses the software developed in this thesis. First, this chapter discusses the procedures involved in network reconfiguration and the features that this system needs to have to achieve that goal. Next, the features are discussed in terms of software functionality that needs to be implemented for those features to exist. Finally, the chapter discusses how the different functionality is grouped into software modules. The specifics of how each module works is described in Chapter 5.
 
 
 % 4.2 Approach
@@ -17,30 +17,30 @@ This chapter discusses the software developed in this thesis. First, this chapte
 % * you can reconfigure the network by sending updates to sets of wisards
 
 \section{Approach}
-To achieve network reconfiguration functionality within WiSARDNet, the following features are required: 
+To achieve network reconfiguration functionality within WiSARDNet, a series of features need to be in place within the system. The features that are needed are as follows:
 
 % a re-summarization o fthe goal of the thesis by describing the features it needs to have (the problem we are trying to solve)
 \begin{itemize}
-	\item The user needs an up to date understanding of a WSN's configuration.
-	\item The user needs to be able to specify the desired configurations or features they want to make to a set or subset of WSN nodes.
-	\item Users need to be able to communicate configuration changes to the WSN. 
-	\item The WSN needs to execute the new behaviors that the user specifies.
-	\item The system needs protections that ensure continued and correct WSN operation.
+	\item A user needs to have an up to date understanding of a WSN's configuration.
+	\item A user needs to have a way to specify the desired configurations or features they would like to make to a set or subset of WSN nodes.
+	\item The user needs to be able to communicate their changes to the WSN. 
+	\item The WSN needs to execute the new behaviors which the user has specified.
+	\item The system needs to have built in protections which ensure continued WSN operation.
 \end{itemize} 
 
-As was shown in Chapter 2, there are many ways that other WSN platforms have approached network reconfiguration. For the work in this thesis, a database abstraction is used as the general approach for structuring WSN reconfiguration. The specific abstraction used that the WSNs in WiSARDNet can be viewed as a database of dynamic heterogeneous behaviors. By viewing the WSNs from a database perspective, queries and inserts become the language that users can use to interact with the WSN. The database paradigm simplifies the complexity of WiSARDNet and guides the design of WSN reconfiguration.\\
+As was shown in Chapter 2, there are a variety of ways that developers have used novel approaches to implement WSN reconfiguration functionality in their respective WSN platforms. For the work in this thesis, a database abstraction is used as the general approach to implementing WSN reconfiguration in WiSARDNet. The specific abstraction used, is the consideration that the WSNs in WiSARDNet can be viewed as a database of dynamic heterogeneous behaviors. By viewing the WSNs from a database perspective, queries and inserts become the language that users can use to interact with the WSN. The database paradigm is used to simplify the complexity of WiSARDNet and guide the design of WSN reconfiguration in WiSARDNet.\\
 
-In addition to the database abstraction, another abstraction is used to approach WSN reconfiguration. As described in Chapter 3, the components that comprise a WiSARD are represented in the WiSARDNet PostgreSQL database as individual devices with deployments that describe their current state. Since a WiSARD is a collection of these physical devices, it is useful to represent the device deployments as WiSARD objects. This is especially true given the number of database relationships that are managed, such as those to parent deployments, device types, sites. Figure \ref{fig:wisard_object} shows how a WiSARD can encapsulate multiple related deployments. 
+In addition to the database abstraction, another abstraction is used to approach WSN reconfiguration. In Chapter 3, all of the components that comprise a WiSARD are represented in the WiSARDNet PostgreSQL database as individual devices with deployments that describe their current state. Since a WiSARD is physically a collection of these devices, it is useful to represent the device deployments as WiSARD data objects. Figure \ref{fig:wisard_object} shows how the different components of a WSN node  can be described by a WiSARD data object. 
 
 % wisard data objects
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{figures/wisard_encapsulation.png}
-	\caption{WiSARD abstraction and corresponding database representation}
+	\includegraphics[width=\textwidth]{figures/wis_data_objects.png}
+	\caption{A visual of the WiSARD abstraction which simplifies the view of a WSN node's many components}
 	\label{fig:wisard_object}
 \end{figure}
 
-Using WiSARD objects as an encapsulation of different device deployments means that a WSN can be reconfigured by updating sets of WiSARDs. The database abstraction of the WSNs and the WiSARD abstraction of the WSN node hardware provide a conceptual foundation for the reconfiguration features to be implemented in software. The WiSARD abstraction is implemented in code as a Java class. Each instance of the WiSARD class encapsulates all of the elements of a WiSARD object as shown in Figure \ref{fig:wisard_object}.
+Using WiSARD data objects as an encapsulation of different device deployments means that a WSN can be reconfigured by updating sets of WiSARDs. The database abstraction of the WSNs and the WiSARD abstraction of the WSN node hardware components provide a conceptual foundation for the WSN reconfiguration features to be implemented in software.
 
 
 % 4.3 Solution Design
@@ -50,35 +50,31 @@ Using WiSARD objects as an encapsulation of different device deployments means t
 % - Group functionality steps into modules/components
 % - Show a "New" SEGA architecture diagram (add-on to figure 3.1) that highlights your additional modules/components
 % - Explain Layer of objects and db code, specifically the Wisard class
-\section{Solution Description}
-Implementing WSN reconfiguration functionality into an existing software system requires that new code modules be developed that account for all of the known use cases and as many future use cases as possible. A practical example is a scenario where a researcher wants all soil moisture transducers attached to WSN nodes in a specific region to be sampled at twice their current sampling rate. Performing this procedure involves the user specifying the region and sensor types needed to produce a matching set of WSN nodes, and that he/she wants the sampling rate of those transducers to be changed. The software needs to validate that there are no conflicts between that user's requested changes and the existing operational configurations of the node. Finally, the nodes will each be signaled via command packets, execute the specified change in configuration, and will then alert the user of the changes made.
+\section{Solution Design}
+Implementing WSN reconfiguration functionality in software into an existing software system requires that new code modules be developed whose features cover all of the desired use cases. A practical example might be the scenario where a researcher would like all soil moisture transducers attached to WSN nodes in a specific region to be sampled at twice their current sampling rate. Performing this procedure would involve the user specifying the region and sensor types needed to produce a matching set of WSN nodes and that they would like the sampling rate of those transducers to be changed. The software would need to validate that there are no conflicts between that user's requested changes and the existing operational configurations of other WSN nodes. Finally, the nodes would each be signaled in their respective WSNs via command packets and would then alert the user of the changes made.
 
 \subsection{Implementing Functionality}
-Each of the features described in the previous section needs to be implemented as software functionality to be used in the WiSARDNet system. This section describes the software tasks for each feature. 
+Each of the features described in the previous section needs to be specifically implemented as software functionality to be used in the WiSARDNet system. This section describes the software design for each feature. 
 
 \subsubsection{Identification of WSN Nodes}
 The first stage in reconfiguring a WSN is the specification of the node or nodes whose configurations will be modified. This operation can be completed by querying the network state information stored in PostgreSQL database tables. Transducer samples, sensor operational data, software profile information, and hardware meta-data are all stored within the database and are necessary to determine which nodes will need to be reconfigured. 
 
 \subsubsection{Describing the New Configuration}
-A WiSARD's task execution is governed by a set of configuration parameters stored within the device's non-volatile memory; this area of memory is called the task control block. Changing a device's behavior is achieved by overwriting specific values within the task control block with values that represent different behaviors. The user must describe the changes to the system so that the correct fields in the task control block can be overwritten with appropriate values corresponding to the new behaviors. This is achieved by encoding different behavior or behavior profiles into control sequences which the WiSARDs are able to decipher. 
+A WiSARD's task execution is governed by a set of configuration parameters stored within the device's non-volatile memory; this area of memory is called the task control block. Changing a device's behavior is achieved by overwriting specific values within the task control block, with values that represent different behaviors. The user must describe the changes to the system so that the correct fields in the task control block can be overwritten with appropriate values corresponding to the new behaviors. This is achieved by encoding different behavior or behavior profiles into control sequences which the WiSARDs are able to decipher. 
 
 \subsubsection{Validating the New Configuration}
-As the number of configuration changes and the number of affected WSN nodes increases, the possibility of errors or resource conflicts between experiments also increases. To prevent conflicts, there is a need to validate that the intended changes will not interfere with other experiments each node is associated with. This is achieved with user access control and command validation.\\
+As the number of configuration changes and the number of affected WSN nodes increases, the opportunity for error or conflicts of interest between researchers and their assets also increases. To prevent conflicts, there is a need to validate that the intended changes will not interfere with the execution of other nodes in the network. This is achieved with user access control and command validation. User access control is the process of restricting the access of users to specific pieces of hardware or software based on a set of rules and permissions that govern the extent to which they can interact with the WSN. For example, a researcher should not be allowed to reconfigure another researcher's hardware or reconfigure the WSN in a way that will adversely affect other experiments. Command validation is the process of analyzing the intended changes and the state of the network, determining whether or not the the command is feasible as well as making sure the user  or process issuing the command has the appropriate permissions or membership access to the affected hardware.
 
-User access control is the process of restricting the access of users to specific pieces of hardware or software based on a set of rules and permissions that govern the extent to which they can interact with the WSN. For example, a researcher should not be allowed to reconfigure another researcher's hardware or reconfigure the WSN in a way that will adversely affect other experiments.\\
-
-Command validation is the process of analyzing the intended changes and the state of the network and determining whether or not the the command is feasible. User access control is the process of making sure the user  or process issuing the command has the appropriate permissions or membership access to the affected hardware. Both procedures are essential in validating a command before execution.
-
-\subsubsection{Command Synthesis}
-Once the commands are created, the specified nodes within the WSN need to receive the desired changes. The command packets are added to MQTT messages and flushed from the MQTT broker at the data center to the destination garden server or servers. Each garden server has a WiSARD client which retrieves the command packet from the local MQTT instance and sends it into the WSN via the hub node. 
+\subsubsection{Signaling the WSN}
+Once the commands are created, the specified nodes within the WSN need to be made aware of the desired changes. The command packets are added to MQTT messages and flushed from the MQTT broker at the data center to the destination garden server or servers. Each garden server has a WiSARD client which will retrieve the command packet from the local MQTT instance and send it into the WSN via the hub node. 
 
 \subsubsection{Executing the Reconfiguration}
-When a WiSARD receives a command message from a parent node, the WiSARD parses the command message and schedules a task to execute the command. When a WiSARD executes a command, a report message is created and sent back through the network to the RTDC. The report message will confirm that the task was successfully executed or report that it failed if the task did not execute successfully.
+When a WiSARD receives a command message from a parent node, the WiSARD parses the command message and schedules a task to execute the command. Each WiSARD schedules tasks and executes them at the appropriate time. When a WiSARD executes a command, a report message is created and sent back through the network to the RTDC. The report message will confirm that the task was successfully executed or report that it failed, if the task did not execute successfully.
 
 \subsubsection{Verifying the New Configuration}
-Report messages that arrive at the RTDC are treated as data streams, the same way sensor readings or diagnostic data are. Reports are archived and made accessible.\\
+Report messages that arrive at the RTDC are treated as data streams, the same way sensor readings or diagnostic data are. Reports are archived and made accessible.
 
-After making a change a WiSARD will report its status to the RTDC. That change is then reflected in the user's view of the network. The changes can then be compared against the user's selected command to verify that the reconfiguration was successfully performed.
+After a change has been made and the report message has been sent back to the RTDC, these reports can be pulled and checked to verify that the changes specified by the user have been applied. After making a change, a WiSARD will report its status which then be reflected in the user's view of the network within their session once the data arrives back at the data center.
 
 % software modules - WiSARD Browser, Command Generator, Validation
 \subsection{Software Modules}
@@ -90,19 +86,31 @@ The software implementation of the functionality described in the previous secti
 	\item Validator module
 \end{itemize}
 
-The WiSARD browser module contains the functionality that can identify sets of WiSARDs that match a user's search criteria. Additionally, this module is responsible for providing an up to date view of a WSN.  The functionality which allows a user to describe a new WSN configuration and signal those changes to the WSN is grouped into the command generator module. The functionality which validates the safety of a new configurations, checks for conflicts, and implements user access control into the system is grouped into the validation module. Figure \ref{fig:wisardnet_ci_additions} illustrates where these new software modules fit into the existing WiSARDNet CI.\\
+The WiSARD browser module contains the functionality that can identify sets and subsets of WiSARDs that match a user's search criteria. Additionally, this module is responsible for providing an up to date view of a WSN.  The functionality which allows a user to describe a new WSN configuration and signal those changes to the WSN are grouped into the command generator module. The functionality which validates the safety of a new configurations, checks for conflicts, and implements user access control into the system are grouped into the validation module. With the addition of these three software modules, all of the funcionality necessary for network reconfiguration is in place. Figure \ref{fig:wisardnet_ci_updated} illustrates where these modules will fit into the WiSARDNet CI.\\
 
-% wisardnet ci additions
+% wisardnet ci with additions
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{figures/wisardnet_added_modules.png}
-	\caption{The modules being added to the WiSARDNet cyberinfrastructure}
-	\label{fig:wisardnet_ci_additions}
+	\includegraphics[width=\textwidth]{figures/wisardnet_ci_additions.png}
+	\caption{A visual of where the new modules fit into the WiSARDNet CI}
+	\label{fig:wisardnet_ci_updated}
 \end{figure}
 
-Each software module contains separate functionality, but they interact and share information with each other as well as the other components of WiSARDNet. The WiSARD browser module interacts with the web portal user interface, it gathers information about the WSN nodes from the PostgreSQL database, provides sets of WiSARDs to the other modules. The command generator module interacts with the WiSARDNet web portal to generate commands based on a user's input. Additionally, it accesses the list of WiSARDs that the WiSARD browser module produces. This module accesses the PostgreSQL database to enable stored behaviors to be turned into commands. Lastly, this module provides information to the validator module so that the commands can be verified. The validator module gets session variables from the web portal to authenticate users. It also takes in a set of commands from the command module, that can validate and report its results.  To verify that the user is permitted to run a specified command, the user and command need to be compared against permission records stored in PostgreSQL database tables. These tables are discussed in detail in Chapter 5.\\
+Each of these software modules contain separate functionality, but they all need to interact and share information with eachother as well as the other components of WiSARDNet. The WiSARD browser module needs to interact with the web portal user interface, it needs to gether information about the WSN nodes from the PostgreSQL database, and needs to be able to privide sets of WiSARDs to the other modules. The command generator module needs to be able to interact with the WiSARDNet web portal to generate commands based on a user's input. Additionally, it needs to access the list of WiSARDs that the WiSARD browser module produces. This module also needs to be able to access the PostgreSQL database to enable stored behaviors to be turned into commands. Lastly, this module needs to be able to provide information to the validator module so that the commands can be verified. The validator module needs to get session variables from the web portal to authenticate users. It also needs to be able to take in a set of commands from the command module, which is can validate and report its results.  To verify that users and commands are appropriate to execute on the network, they need to be analyzed against the user and access information stored in the PostgreSQL database.\\
 
-In summary, the functionality is grouped into three distinct software modules: WiSARD browser, command generator, and validator. These modules need to be able to interact with the different components of the WiSARDNet CI as well as with each other. The software implementations of the modules are discussed in Chapter 5.
+In summary, all of the features necessary for WSN reconfiguration can be achieved by developing discrete pieces of functionality into the WiSARDNet CI. These pieces of functionality can be grouped into three distinct software modules: WiSARD browser, command generator, and validator. These modules need to be flexible and able to interact with the different components of the WiSARDNet CI as well as with eachother. The software implementation of each of the functional designs discussed in this chapter are discussed in Chapter 5.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 %\section{Network Reconfiguration Stages}

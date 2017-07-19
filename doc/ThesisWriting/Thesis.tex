@@ -22,6 +22,7 @@
 \usepackage{listings}
 \usepackage[usenames,dvipsnames]{color} 		% Custom colors
 \usepackage{notoccite}
+\usepackage{xcolor}
 \hypersetup{urlcolor=blue, colorlinks=true}  % Colours hyperlinks in blue, but this can be distracting if there are many links.
 
 \renewcommand{\cftchapfont}{\bfseries}
@@ -66,6 +67,10 @@
         morekeywords=[3]{test},
        	%
         morecomment=[l][\color{Blue}]{...}, % Line continuation (...) like blue comment
+        columns=fullflexible,
+        frame=single,
+        breaklines=true,
+        postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 }
 
 % Creates a new command to include a C script, the first parameter is the filename of the script (without .c), the second parameter is the caption
@@ -84,7 +89,7 @@
 \frontmatter	  % Begin Roman style (i, ii, iii, iv...) page numbering
 \setstretch{2}
 % Set up the Title Page
-\title  {SPECIFYING SENSOR/ACTUATOR NETWORK EXECUTION: A RELATIONAL DATABASE APPROACH}
+\title  {LARGE-SCALE SENSOR/ACTUATOR NETWORKS AS DATABASES OF DYNAMIC HETEROGENEOUS ACTIONS}
 \authors  {\texorpdfstring
             {{Michael Middleton}}
             {Michael Middleton}
@@ -123,8 +128,13 @@ Wireless sensor networks (WSN) provide a robust and versatile solution to distri
 \acknowledgements{
 \addtocontents{toc}{\vspace{1em}}  % Add a gap in the Contents, for aesthetics
 
-List acknowledgments here
+First, I would like to express my gratitude to Dr. Flikkema for providing me the opportunities I have undertaken these past several years. Thank you for your insight and patience as I worked towards this goal. The opportunity to work in your lab has been one of a kind and one I will not forget.
 
+Thank you to Dr. Afghah and Dr. Palmer for agreeing to serve on my committee.
+
+Thank you to everyone in the lab for the fun times, road trips, and late nights. Special thanks to Jonathan Knapp and Chris Porter for being an example and teaching me so much.
+
+Finally, I would like to thank my family for all of their love and support over the last several years.  Without you this would not have been possible.
 }
 \clearpage  % End of the Acknowledgements
 
@@ -154,7 +164,7 @@ List acknowledgments here
 \clearpage  % Start a new page
 
 \pagestyle{empty}  % Page style needs to be empty for this page
-\dedicatory{List dedication here}
+\dedicatory{To my family}
 
 \addtocontents{toc}{\vspace{2em}}  % Add a gap in the Contents, for aesthetics
 
@@ -172,13 +182,13 @@ List acknowledgments here
 
 \input{./Chapters/Chapter3} % WSN Platform
 
-\input{./Chapters/Chapter4} % Modeling
+\input{./Chapters/Chapter4} % Approach to Reconfiguration
 
-%\input{./Chapters/Chapter5} % Minimization
+\input{./Chapters/Chapter5} % Software Implementation
 
-%\input{./Chapters/Chapter6} % Results and Discussion
+\input{./Chapters/Chapter6} % Automated Agents
 
-%\input{./Chapters/Chapter7} % Conclusion
+\input{./Chapters/Chapter7} % Conclusion and Future Work
 
 %% ----------------------------------------------------------------
 % Now begin the Appendices, including them as separate files
@@ -188,15 +198,16 @@ List acknowledgments here
 \backmatter
 \addtocontents{toc}{\vspace{2em}}  % Add a gap in the Contents, for aesthetics
 
-\appendix
-\input{./Chapters/Appendix}
+%\appendix
+%\input{./Chapters/Appendix}
 
 %% ----------------------------------------------------------------
 \nocite{*}
 %\label{Bibliography}
 %\lhead{\emph{Bibliography}}  % Change the left side page header to "Bibliography"
 %\bibliographystyle{IEEEtrans}  % Use the "unsrtnat" BibTeX style for formatting the Bibliography
-\bibliographystyle{ieeetr}
+%ieeetr
+\bibliographystyle{IEEEtran}
 \bibliography{Bibliography}  % The references (bibliography) information are stored in the file named "Bibliography.bib"
 
 

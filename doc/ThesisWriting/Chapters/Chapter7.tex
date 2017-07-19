@@ -1,0 +1,49 @@
+% Chapter 7
+
+\chapter{Conclusion and Future Work}
+\label{Chapter 7}
+%\head{}
+
+% 7 Future Work and Conclusion
+% - Describe what your work accomplished
+% * Describe each module
+% 	- what it accomplishes
+%	- How it could be expanded for future work given its design
+
+\section{Overview}
+This work introduces new functionality into the WiSARDNet platform that enhances the usability of the system for researchers. Its design also provides a foundation for more features to be added in the future. This chapter summarizes the accomplishments of this thesis and assesses the impact each component has on the WiSARDNet platform and its users. Finally, this chapter discusses opportunities for future work. 
+
+\section{Conclusions}
+This work presents a design and implementation for adding network reconfiguration capabilities to the WiSARDNet platform according to the requirements established in Chapter 1. Each design requirement is listed below along with a description of how it was accomplished in this work.
+
+\begin{itemize}
+	\item \textbf{Implementation of an application that allows users to remotely identify and select sets of WSN nodes based on static and dynamic search criteria.} The WiSARD browser module fulfills this objective by allowing users to specify information that corresponds to a variety of WiSARD attributes that are both static and dynamic in nature. This module produces a set of WiSARDs that match the search criteria entered by the user. 
+
+	\item \textbf{Implementation of an interface allowing users to enact behavioral changes in individual or groups of nodes.} This objective is satisfied by the command generation module that generates commands to reconfigure WiSARDs based on changes by the user. The extent to which a user can reconfigure the WiSARDs is governed by a user access control  and network safety check that is performed for every command that is generated.
+
+	\item \textbf{Generalization of the reconfiguration software such that agents can monitor and reconfigure network nodes.} This is satisfied with the implementation of automated agents that are able to utilize each of the three modules to reconfigure WiSARDs in reaction to different events that can be specified for each agent. Additionally, automated agents are subject to the same user access control and validation rules as human users.
+\end{itemize}
+
+
+\section{Future Work}
+WiSARDNet is a platform that supports complex distributed ecological experiments. In this work, the addition of user access control, remote reconfiguration, and the ability to automate reconfiguration adds valuable functionality to the WiSARDNet platform. It also provides a foundation supporting additional capabilities. 
+
+\subsection{Stored Behaviors and Profiles}
+The central paradigm of this thesis is that a WSN can be viewed as a database of heterogeneous behaviors, and that network reconfiguration can be achieved using a database approach. The process of network reconfiguration utilizes a command generator to build messages that invoke WSN configuration changes. A natural extension of this functionality would be for a user to have access to reconfiguration profiles, or groups of reconfiguration commands that produce a more complex defined behavior for a WiSARD. These profiles could be stored in a PostgreSQL data table, and could be selected and pushed out to a set of WiSARDs.\\
+
+One example is a low power profile that reduces the sampling rates of all transducers in a WiSARD. This profile could also change the WiSARD's role from a node that relays messages to other nodes into a leaf node that does not need to expend energy communicating with other nodes. Once operational, a user would have access to this profile that could then be executed via the commands it encapsulates. Additionally, profiles could be governed by the permission system, due to the generalized nature of the user access control schema. An extension of the permission resource table to include profiles would allow a permission entity to be granted access to specific profiles. 
+
+\subsection{OTA Reprogramming}
+Currently, new firmware versions must be physically uploaded to the WiSARDs because there currently is no over-the-air (OTA) reprogramming capability for the WiSARDs. The software implemented for this thesis could be expanded to support OTA reprogramming. The compiled source code for a new firmware update could be broken down into a series of messages, where each message payload contains a numbered piece of the new firmware. These messages could be sent sequentially to the intended WiSARD; once the WiSARD has received all of the messages, it could begin to overwrite the existing firmware in flash memory with the new firmware.\\
+
+Implementing these features would not be a trivial task. OTA reprogramming would require expanding the command generation with features that would support breaking down a file containing a new firmware into many messages, numbering these messages, and sending these messages to the intended WiSARD. Additionally the firmware on WiSARDs would need to be upgraded to support these behaviors as well. The WiSARD would need to be able to recognize that each message is a piece of a new firmware, and would need to store that piece of the message. Additionally, the WiSARD would need to verify that it has received all of the messages correctly, assemble the firmware pieces from each message into the entire file, and then overwrite the existing firmware with the new version. The process of overwriting the old firmware with the new one would also need to have a way to revert back to the old firmware if the new firmware was unable to be correctly downloaded or stored.\\
+
+OTA reprogramming would require all of these new features, but the work of this thesis provides a foundation for these features to be built upon. 
+
+\subsection{Creation of Automated Agents}
+The addition of automated agents to the WiSARDNet system provides a way for the WSNs to be monitored and reconfigured in real time based on different events that a developer or researcher must specify for each agent. The use case described in Chapter 6 is a fairly simple example which manages the sampling rate of a WiSARD based on the time of day, but the system supports complex agents that monitor and reconfigure large numbers of WiSARDs in response to many different events. The agents are designed to have access to all of the monitoring and reconfiguration features that a human user does, so any improvements or additions to the modules such as the ones described in the previous sections would also benefit the agents in expanding their capabilities. Everything is in place for a user to build a complex agent by following the example code in Chapter 6.\\
+
+\subsection{Improved User Interface}
+As is the case with many software systems, there are plenty of opportunities for improvements to be made to the user interface. The user interface for the WiSARD Browser and Command Generation Module presents users with a simple way to enter WiSARD search criteria and specify changes. This can be improved with the inclusion of a geographic map that allows a user to view all of the WiSARDs that he/she has permission to reconfigure. Users with experiments spanning large geographic regions would have an easier time visualizing the effects of a reconfiguration if they had access to a user interface that displayed WiSARDs in this way.\\
+
+Another opportunity for improvement is a user interface that lets a user build an automated agent visually, rather than requiring that he/she develop an agent by programming it directly. This would make automating network reconfiguration much more accessible to researchers without sufficient Java programming experience. This would require generalizing the agent code and allowing boiler-plate features to be specified and populated from either a form or some other type of user input. Additionally, allowing users to edit and modify agents from this user interface would also be beneficial.
