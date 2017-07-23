@@ -66,7 +66,7 @@ public class SegaDB{
 			e.printStackTrace();
 		}
 		catch (Exception e){
-			
+			e.printStackTrace();
 		}
 	}
 	
@@ -392,6 +392,39 @@ public class SegaDB{
 			return null;
 		return resultSet;
 	}
+	/*
+	 * returns a result set of all persons who have write or full access to a specified deployment
+	 */
+	public ResultSet getAllPersonsForWisardDeployment(Wisard w) throws SegaWebException{
+		String statement = 
+				"SELECT person.*" +
+				"FROM person" +
+					"LEFT JOIN permission_entity ON person.person_id=permission_entity.person_id" +
+					"LEFT JOIN permission ON permission_entity.permission_entity_id=permission.permission_entity_id" +
+					"LEFT JOIN permission_resource ON permission.permission_resource_id=permission_resource.permission_resource_id" +
+					"LEFT JOIN deployment on permission_resource.deploy_id=deployment.deploy_id" +
+					"LEFT JOIN device on deployment.device_id=device.device_id" +
+					"LFET JOIN devicetype on device.devicetype_id=devicetypte.devicetype_id" +
+				"WHERE devicetype.name='CP' AND permission.access_level!='' AND permission.access_level!='read' AND deployment.relative_id= '" + w.getNetwork_id() + "'" +
+				"ORDER BY person.person_id asc;";
+		System.out.println(statement);
+		ResultSet resultSet = conn.executeStatement(statement);
+		if(resultSet == null)
+			return null;
+		return resultSet;
+	}
+	/*
+	 * returns a result set of all persons
+	 */
+	public ResultSet getAllPersons() throws SegaWebException{
+		String statement =
+				"SELECT person.* FROM person";
+		System.out.println(statement);
+		ResultSet resultSet = conn.executeStatement(statement);
+		if(resultSet == null)
+			return null;
+		return resultSet;
+	}
 	
 	/*
 	 * returns a result set of all sites
@@ -432,5 +465,16 @@ public class SegaDB{
 		if(resultSet == null)
 			return null;
 		return resultSet;
+	}
+	
+	/*
+	 * returns a result set of person and login relationships
+	 */
+	public ResultSet getLoginPerson(String username, String password) throws SegaWebException{
+		String statement = "SELECT * FROM person WHERE person_id IN (SELECT login.person_id FROM login JOIN person ON login.person_id=person.person_id WHERE login.username='" + username + "' AND login.password='" + password + "');" ;
+		ResultSet rs = conn.executeStatement(statement);
+		if(rs == null)
+			return null;
+		return rs;
 	}
 }

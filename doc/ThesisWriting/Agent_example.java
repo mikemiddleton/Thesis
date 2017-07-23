@@ -13,20 +13,20 @@ public class MyAutomatedAgent TimerTask{
 	public static volatile byte taskID_lo;
 	public static volatile byte fieldID;
 
+	// The run method for the example program
 	public void run(){
 		toggleInterval();
-		scheduleTask(1);
+		scheduleTask(12);
 	}
 
+	// A method which generates and executes the commands for the reconfiguration
 	public void toggleInterval(){
-		//  - make a NetManagementCommand subclass named SetSamplingRate
-		
-		interval = interval == 60 ? 300:60;
-
+		interval = interval == 60 ? 300:60; // toggles between 1 and 5 minute rates
 		SetSamplingRate cmd = new SetSamplingRate(interval);
 		AutomatedAgentController.runCommand(cmd, agent);
 	}
 
+	// A method which schedules reconfiguration events 
 	public static void scheduleTask(int numberOfHours){
 			// get current time
 			LocalDateTime currentTime = LocalDateTime.now(Clock.systemUTC());
@@ -43,12 +43,12 @@ public class MyAutomatedAgent TimerTask{
 	}
 
 	public static void main(String[] args){
-		// to do - set wisard, hub, taskID_hi, taskID_lo, fieldID,
+		// check that all input arguments were given
 		if(args.length < 6){
 			throw new IllegalArgumentException("You must provide site, wisard ID, hub ID, taskID_hi, taskID_lo, and fieldID");
 		}
 
-		// assign passed in command line arguments
+		// store the passed in command line arguments
 		String site = args[0];
 		int wisardID = Integer.parseInt(args[1]);
 		try{
@@ -73,6 +73,7 @@ public class MyAutomatedAgent TimerTask{
 		});
 		new Thread(agent).start();
 
-		scheduleTask(1);
+		// schedule the first reconfiguration event
+		scheduleTask(12);
 	}
 }

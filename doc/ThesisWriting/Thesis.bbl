@@ -21,6 +21,16 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{levis2005tinyos}
+P.~Levis, S.~Madden, J.~Polastre, R.~Szewczyk, K.~Whitehouse, A.~Woo, D.~Gay,
+  J.~Hill, M.~Welsh, E.~Brewer \emph{et~al.}, ``Tinyos: An operating system for
+  sensor networks,'' \emph{Ambient intelligence}, vol.~35, pp. 115--148, 2005.
+
+\bibitem{Barr}
+R.~Barr, J.~C. Bicket, D.~S. Dantas, B.~Du, T.~Kim, B.~Zhou, and E.~G. Sirer,
+  ``On the need for system-level support for ad hoc and sensor networks,''
+  \emph{ACM SIGOPS Operating Systems Review}, vol.~36, no.~2, pp. 1--5, 2002.
+
 \bibitem{Ivester}
 M.~Ivester and A.~Lim, ``Interactive and extensible framework for execution and
   monitoring of wireless sensor networks,'' in \emph{2006 1st International
@@ -37,11 +47,6 @@ M.~Hammoudeh, S.~Mount, O.~Aldabbas, and M.~Stanton, ``Clinic: A service
 \bibitem{Levis}
 P.~Levis and D.~Culler, ``Maté: A tiny virtual machine for sensor networks,''
   \emph{ACM Sigplan Notices}, vol.~37, no.~10, pp. 85--95, 2002.
-
-\bibitem{Barr}
-R.~Barr, J.~C. Bicket, D.~S. Dantas, B.~Du, T.~Kim, B.~Zhou, and E.~G. Sirer,
-  ``On the need for system-level support for ad hoc and sensor networks,''
-  \emph{ACM SIGOPS Operating Systems Review}, vol.~36, no.~2, pp. 1--5, 2002.
 
 \bibitem{Flikkema}
 P.~G. Flikkema, K.~R. Yamamoto, S.~Boegli, C.~Porter, and P.~Heinrich,

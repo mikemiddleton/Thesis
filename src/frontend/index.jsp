@@ -74,6 +74,8 @@
 <!-- Header bottons to jump between tabs-->
 
 <jsp:include page="/includes/header.jsp" /> 
+<c:choose>
+<c:when test="${!empty sessionScope.remoteUser}">
   <div class="progress_content">
     <div class="progress_bar_wrapper" style="z-index:0;">
       <div class="progress_bar_unconfigured" id="source_tab_bar"></div>
@@ -134,7 +136,7 @@
               </tr>
             
                     <!-- State Selection -->
-            <!--
+            
               <tr>
                 <td align="right"><span class="data_select_label">State Select:</span></td>
                 <td align="right" valign="middle"><input type="hidden" name="current_tab" value="source_tab" /> 
@@ -159,7 +161,7 @@
                   </div>
                 </td>
               </tr>
-            -->
+            
                 
               <!-- Garden Server Select -->
 
@@ -191,7 +193,7 @@
               -->
 
               <!-- CP Role Select -->
-              <!--
+              
               <tr>
                 <td align="right"><span class="data_select_label">WiSARD Role Select:</span></td>
                 <td align="right" valign="middle"><input type="hidden" name="current_tab" value="source_tab" />
@@ -216,7 +218,7 @@
                   </div>
                 </td>                
               </tr>
-              -->
+              
 
               <!-- SP Type Select -->
               <tr>
@@ -243,6 +245,58 @@
                   </div>
                 </td>                
               </tr>  
+
+
+              <!-- Experiment -->
+              <tr>
+                <td align="right"><span class="data_select_label">Experiment Select:</span></td>
+                <td align="right" valign="middle"><input type="hidden" name="current_tab" value="source_tab" />
+                  <div class="data_select">
+                  <select id="exp_selection" class="sega_form_item" name="data_exp_selection">
+                    <option value="" disabled="true" selected="true">Select an Experiment...</option>
+                    <option value="reset">Reset Command</option>
+                  </select>
+                  </div>
+                <td>
+                  <div class="query_icon_wrapper">
+                    <img src="${pageContext.request.contextPath}/images/icons/item_icons/info_icon.png" class="query_icon_image" id="site_select_info" onClick="getDescById('dom_description_strings',this.id);" style="cursor:pointer;" title="Info">
+                  </div>
+                </td>                
+              </tr> 
+
+              <!-- Transducer Type -->
+              <tr>
+                <td align="right"><span class="data_select_label">Transducer Select:</span></td>
+                <td align="right" valign="middle"><input type="hidden" name="current_tab" value="source_tab" />
+                  <div class="data_select">
+                  <select id="transducer_selection" class="sega_form_item" name="data_transducer_selection">
+                    <option value="" disabled="true" selected="true">Select a Transducer Type...</option>
+                    <option value="reset">Reset Command</option>
+                  </select>
+                  </div>
+                <td>
+                  <div class="query_icon_wrapper">
+                    <img src="${pageContext.request.contextPath}/images/icons/item_icons/info_icon.png" class="query_icon_image" id="site_select_info" onClick="getDescById('dom_description_strings',this.id);" style="cursor:pointer;" title="Info">
+                  </div>
+                </td>                
+              </tr> 
+
+              <!-- Deployment Type -->
+              <tr>
+                <td align="right"><span class="data_select_label">Deployment Type Select:</span></td>
+                <td align="right" valign="middle"><input type="hidden" name="current_tab" value="source_tab" />
+                  <div class="data_select">
+                  <select id="depl_selection" class="sega_form_item" name="data_depl_selection">
+                    <option value="" disabled="true" selected="true">Select a Deployment Type...</option>
+                    <option value="reset">Reset Command</option>
+                  </select>
+                  </div>
+                <td>
+                  <div class="query_icon_wrapper">
+                    <img src="${pageContext.request.contextPath}/images/icons/item_icons/info_icon.png" class="query_icon_image" id="site_select_info" onClick="getDescById('dom_description_strings',this.id);" style="cursor:pointer;" title="Info">
+                  </div>
+                </td>                
+              </tr> 
 
               <!-- Wis Serial ID entry -->
               <tr>
@@ -335,14 +389,16 @@
       
       <div id="output_tab" class="accordian_header">Command</div>
       <div id="output_tab_content">
-        <div class="post_header" style="color:#666666; margin-bottom:10px;"> View WiSARDs </div>
+        <div class="post_header" style="color:#666666; margin-bottom:10px;"> Select Configuration Change </div>
           <table style="clear:both">
             <form id="getCMD" name="getCMD" action="/segaWeb/NetworkManagementServlet" method="post">
             <tr>
               <div class="data_select">  
                 <select id="cmd_selection" class="sega_form_item" name="data_cmd_selection">
                   <option value="reset">Reset Command</option>
-                  <option value="change_interval">Change Intvl</option>
+                  <option value="change_interval">Change Sample Rate</option>
+                  <option value="valve_duration">Actuate Valve</option>
+                  <option value="change_role">Change WiSARD Role</option>
                 </select>
               </div>
             </tr>
@@ -408,6 +464,13 @@
       </div>
   </div>
 </div>
+</c:when>
+<c:otherwise>
+  <div class="form_content_wrapper">
+  <h2>Please Log In to Access This Tool</h2>
+  </div>
+</c:otherwise>
+</c:choose>
 </div>
 
 <script>

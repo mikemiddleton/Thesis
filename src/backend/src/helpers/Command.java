@@ -13,10 +13,10 @@ public class Command implements java.io.Serializable
 	 */
 	private static final long serialVersionUID = 1409503657656669825L;
 	// Variables
-	public byte[] command;
-	public long expiration_date;
-	public int priority;
-	public Command next;
+	private byte[] command;
+	private long expiration_date;
+	private int priority;
+	private Command next;
 	
 	/**
 	 * Default constructor.

@@ -6,7 +6,7 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MqttDefaultFilePersistence;
 
-import helpers.IValidationIssue;
+import helpers.ValidationIssue;
 import helpers.Site;
 import helpers.SmartList;
 import helpers.ValidationIssue;
@@ -32,7 +32,7 @@ public abstract class NetManagementCommand {
 		this.expiration = expiration;
 	}
 	
-	public abstract byte[] getPayload(byte hub_hi, byte hub_lo, byte dest_hi, byte dest_low);
+	public abstract byte[] getPayload(byte hub_hi, byte hub_lo, byte dest_hi, byte dest_lo);
 	public abstract SmartList<ValidationIssue> validate(Wisard w);
 	public abstract SmartList<ValidationIssue> validate(Site s, Wisard w);
 	public abstract SmartList<ValidationIssue> validate(Experiment e, Wisard w);

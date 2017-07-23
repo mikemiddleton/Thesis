@@ -238,7 +238,7 @@
    \begin{center}
      {\normalsize{{ABSTRACT}} \par}
      \vskip 1cm
-     {\normalsize {LARGE-SCALE SENSOR/ACTUATOR NETWORKS AS DATABASES OF DYNAMIC HETEROGENEOUS ACTIONS} \par}
+     {\normalsize {DYNAMIC RECONFIGURATION OF LARGE-SCALE SENSOR/ACTUATOR NETWORKS: A DATABASE-ENABLED APPROACH} \par}
     \vskip 1cm
     {\normalsize {MICHAEL MIDDLETON}}
     \vskip 1cm

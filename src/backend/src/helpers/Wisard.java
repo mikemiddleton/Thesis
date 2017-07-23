@@ -14,7 +14,7 @@ import helpers.SP;
 /* 
  * class definition for wisard objects
  */
-public class Wisard implements Serializable{
+public class Wisard implements IPermissionResource, Serializable {
 	private int device_id;
 	private String serial_id;
 	private String description;
@@ -207,11 +207,33 @@ public class Wisard implements Serializable{
 	}
 	
 	/*
+	 * returns a Wisard based on its site and network id
+	 */
+	public static Wisard getByID(int wisID, String site) throws Exception{
+		SmartList<Wisard> sl = new SmartList<>(getAllWisards());
+		return sl.where((Wisard w) -> wisID == w.getNetwork_id() && site.equals(w.getSite())).get(0);
+	}
+	
+	/*
 	 * returns a SmartList of WiSARDs with the SP type "ST"
 	 */
 	public static SmartList<Wisard> getAllWisardsWithST() throws Exception{
 		SmartList<Wisard> sl = new SmartList<>(getAllWisards());
 		//sl.forEach((Wisard w) -> System.out.println(w));
 		return sl.where((Wisard w) -> (w.getAttachedSPs().where((SP sp) -> "ST".equals(sp.getSPType())).size() > 0 ));
+	}
+
+	@Override
+	public SmartList<Person> getAllPersons() throws SQLException, SegaWebException, NullPointerException, IOException {
+		SegaDB sdb = new SegaDB();
+		sdb.init();
+		ResultSet rs = sdb.getAllPersonsForWisardDeployment(this);
+		SmartList<Person> persons = new SmartList<Person>();
+		sdb.disconnect();
+		
+		while(rs.next()){
+			persons.add(new Person(rs));
+		}
+		return persons;
 	}
 }

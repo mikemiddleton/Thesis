@@ -2,18 +2,20 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Cyberinfrastructure hardware and software component hierarchy\relax }}{17}{figure.caption.14}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Device Relationship Structure\relax }}{24}{figure.caption.20}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces A visual showing each device (background) and its active deployment (foreground) and how the deployments are connected\relax }}{25}{figure.caption.21}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Example of a WiSARD's device relationship structure. This WiSARD has three SPs and each SP has a transducer. The SP-CM-STM also has a water valve that it actuates.\relax }}{24}{figure.caption.20}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces WiSARD abstraction and corresponding database representation\relax }}{31}{figure.caption.32}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces The modules being added to the WiSARDNet cyberinfrastructure\relax }}{36}{figure.caption.42}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Example of WiSARD abstraction encapsulating multiple related device deployments. Each arrow represents a deployment record's reference to its parent deployment.\relax }}{31}{figure.caption.31}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Database representation of example WiSARD abstraction from Figure \ref {fig:wisard_object}. The arrows illustrate foreign key references between records in different tables.\relax }}{32}{figure.caption.32}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces The software modules being added to the WiSARDNet cyberinfrastructure for WiSARD reconfiguration are shown in the shaded boxes. \relax }}{39}{figure.caption.43}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces A flow diagram showing each action the WiSARD Browser Module makes\relax }}{39}{figure.caption.46}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces A depiction of the way in which the servlet relays information between the user interface and the core software modules \relax }}{40}{figure.caption.48}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces A flow diagram showing each action the Command Generation Module makes\relax }}{45}{figure.caption.52}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces A flow diagram showing each action the Validation Module makes\relax }}{47}{figure.caption.54}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces A diagram that shows how the three new Permission tables are used to create a user access control schema\relax }}{50}{figure.caption.57}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces A class diagram showing how new commands inherit from their parent class, yet implement their own validate method\relax }}{52}{figure.caption.59}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Flow of actions performed by Wisard\_Browser\_Module\relax }}{42}{figure.caption.47}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces NetworkManagementServlet relays information between the user interface and Wisard\_Browser\_Module, Cmd\_Generation\_Module, and Validation\_Module.\relax }}{44}{figure.caption.49}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces A screen capture of the user interface page where a user specifies WiSARD search criteria\relax }}{45}{figure.caption.50}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces A screen capture of the user interface where configurations can be specified\relax }}{49}{figure.caption.54}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces A flow diagram showing each action Cmd\_Generation\_Module makes\relax }}{49}{figure.caption.55}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces A flow diagram showing each action of Validation\_Module\relax }}{53}{figure.caption.58}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces A diagram that shows how the three new Permission tables are used to create a user access control schema\relax }}{56}{figure.caption.61}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces A class diagram showing how new commands inherit from their parent class, yet implement their own validate method\relax }}{58}{figure.caption.63}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces A class diagram showing the composition of the agents and their relevant classes\relax }}{57}{figure.caption.64}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces A UML class diagram showing the classes and interfaces necessary to instantiate AutomatedAgent objects. The arrows describe the relationships between the four different classes as well as the two interfaces. \relax }}{63}{figure.caption.69}
 \addvspace {10\p@ }

@@ -17,13 +17,13 @@ public class Person implements IPermissionEntity{
 	private String phone;
 	
 	public Person(ResultSet rs) throws SQLException{
-		this.setPerson_id(rs.getInt(person_id));
-		this.setFirst(rs.getString(first));
-		this.setLast(rs.getString(last));
-		this.setOrganization_id(rs.getInt(organization_id));
-		this.setDescription_id(rs.getInt(description_id));
-		this.setEmail(rs.getString(email));
-		this.setPhone(rs.getString(phone));
+		this.setPerson_id(rs.getInt("person_id"));
+		this.setFirst(rs.getString("first"));
+		this.setLast(rs.getString("last"));
+		this.setOrganization_id(rs.getInt("organization_id"));
+		this.setDescription_id(rs.getInt("description_id"));
+		this.setEmail(rs.getString("email"));
+		this.setPhone(rs.getString("phone"));
 	}
 	
 	@Override
