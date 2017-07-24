@@ -28,20 +28,24 @@ import org.postgresql.util.PSQLException;
 
 // include sega classes
 import edu.nau.rtisnl.SegaWebException;
-import helpers.IValidationIssue;
 import helpers.KeyValueObject;
+import helpers.Person;
 import helpers.SP;
 import helpers.SegaDB;
 import helpers.SmartList;
 import helpers.ValidationIssue;
 import helpers.Wisard;
 import helpers.SmartList;
+import helpers.Experiment;
+import helpers.Site;
 //import utilities.ConnectionHandler;
 import utilities.SegaLogger;
 import utilities.ArrayUtilities;
 import utilities.CRC;
+import utilities.NetManagementCommand;
 import utilities.NetResetCommand;
 import utilities.PacketGenerator;
+import utilities.Validator;
 
 /**
  * Servlet implementation class NetworkManagementServlet
@@ -277,6 +281,9 @@ public class NetworkManagementServlet extends HttpServlet {
 			  ResultSet resultSet_cproles = db_helper.getListOfCPRoles();
 			  ResultSet resultSet_sptypes = db_helper.getListOfSPTypes();
 			  ResultSet resultSet_gardenservers = db_helper.getListOfGardenServers();
+			  ResultSet resultSet_experiments = db_helper.getAllExperiment(); //
+			  ResultSet resultSet_transducertypes = db_helper.getListOfTransducerTypes(); //
+			  ResultSet resultSet_deploymenttypes = db_helper.getListOfDeploymentTypes(); //
 			  
 			  // make the result set
 			  ArrayList<KeyValueObject> results_sites = new ArrayList<KeyValueObject>();
@@ -284,6 +291,9 @@ public class NetworkManagementServlet extends HttpServlet {
 			  ArrayList<KeyValueObject> results_cproles = new ArrayList<KeyValueObject>();
 			  ArrayList<KeyValueObject> results_sptypes = new ArrayList<KeyValueObject>();
 			  ArrayList<KeyValueObject> results_gardenservers = new ArrayList<KeyValueObject>();
+			  ArrayList<KeyValueObject> results_experiments = new ArrayList<KeyValueObject>();
+			  ArrayList<KeyValueObject> results_transducertypes = new ArrayList<KeyValueObject>();
+			  ArrayList<KeyValueObject> results_deploymenttypes = new ArrayList<KeyValueObject>();
 			  
 			  // add sites to results
 			  while(resultSet_sites.next()){
@@ -310,18 +320,40 @@ public class NetworkManagementServlet extends HttpServlet {
 				  results_gardenservers.add(new KeyValueObject(resultSet_gardenservers.getObject("sitename").toString(), resultSet_gardenservers.getObject("sitename").toString()));
 			  }
 			  
+			  // add experiments
+			  while(resultSet_experiments.next()){
+				  results_experiments.add(new KeyValueObject(resultSet_experiments.getObject("name").toString(), resultSet_experiments.getObject("name").toString()));
+			  }
+			  
+			  // add transducertypes
+			  while(resultSet_transducertypes.next()){
+				  results_transducertypes.add(new KeyValueObject(resultSet_transducertypes.getObject("name").toString(), resultSet_transducertypes.getObject("name").toString()));
+			  }
+			  
+			  // add deploymenttypes
+			  while(resultSet_deploymenttypes.next()){
+				  results_deploymenttypes.add(new KeyValueObject(resultSet_deploymenttypes.getObject("deployment_type_name").toString(), resultSet_deploymenttypes.getObject("deployment_type_name").toString()));
+			  }
+			  
 			  // set attributes
 			  request.getSession().setAttribute("sites", results_sites);
 			  request.getSession().setAttribute("states", results_states);
 			  request.getSession().setAttribute("cproles", results_cproles);
 			  request.getSession().setAttribute("sptypes", results_sptypes);
 			  request.getSession().setAttribute("gardenservers", results_gardenservers);
+			  request.getSession().setAttribute("experiments", results_experiments);
+			  request.getSession().setAttribute("transducertypes", results_transducertypes);
+			  request.getSession().setAttribute("deploymenttypes", results_deploymenttypes);
 			  
 			  // close resultSets
 			  resultSet_sites.close();
 			  resultSet_states.close();
 			  resultSet_cproles.close();
 			  resultSet_sptypes.close();
+			  resultSet_gardenservers.close();
+			  resultSet_experiments.close();
+			  resultSet_transducertypes.close();
+			  resultSet_deploymenttypes.close();
 			
 			  // disconnect
 			  db_helper.disconnect();
@@ -345,6 +377,7 @@ public class NetworkManagementServlet extends HttpServlet {
 				// filter based on sp-type
 				if(!(request.getParameter("data_sptype_selection") == null) && !(request.getParameter("data_sptype_selection").equals("")))
 					wisards = wisards.where((Wisard w) -> (w.getAttachedSPs().where((SP sp) -> request.getParameter("data_sptype_selection").equals(sp.getSPType())).size() > 0 ));
+
 				
 				// filter based on wisard relative id
 				if(!(request.getParameter("network_id_selection") == null) && !(request.getParameter("network_id_selection").equals(""))){
@@ -367,15 +400,57 @@ public class NetworkManagementServlet extends HttpServlet {
 						return request.getParameter("data_site_selection").equals(w.getSite());
 					});
 				}			
+				
+				// wisard role
+				if(!(request.getParameter("data_cprole_selection") == null) && !(request.getParameter("data_cprole_selection").equals(""))){
+					wisards = wisards.where((Wisard w) -> {
+						return request.getParameter("data_cprole_selection").equals(w.getRole());
+					});
+				}
+				
+				// filter based on experiment
+				if(!(request.getParameter("data_exp_selection") == null) && !(request.getParameter("data_exp_selection").equals(""))){
+					wisards = wisards.where((Wisard w) -> {
+						return w.getExperiments().where((Experiment e) -> e.getName().equals(request.getParameter("data_exp_selection"))).size() > 0 ;
+					});
+				}
+				
+				// filter based on state
+				if(!(request.getParameter("data_state_selection") == null) && !(request.getParameter("data_state_selection").equals(""))){
+					wisards = wisards.where((Wisard w) -> {
+						if(request.getParameter("data_state_selection") != null){
+							if(w.getState() != null)
+								return w.getState().equals(request.getParameter("data_state_selection"));
+						}
+						return false;
+					});
+				}
+					
+				// filter based on deployment type
+				if(!(request.getParameter("data_deploymenttype_selection") == null) && !(request.getParameter("data_deploymenttype_selection").equals(""))){
+					wisards = wisards.where((Wisard w) -> {
+						return w.getDeploymentType().equals(request.getParameter("data_deploymenttype_selection"));
+					});
+				}
+				
+				// filter based on transducertype
+				if(!(request.getParameter("data_transducer_selection") == null) && !(request.getParameter("data_transducer_selection").equals(""))){
+					wisards = wisards.where((Wisard w) -> {
+						return w.getTransducerTypes().where((String s) -> s.equals(request.getParameter("data_transducer_selection"))).size() > 0;
+					});
+				}
 			  
 			  // set attributes
 			  request.getSession().setAttribute("wisardTable", wisards);
 			  request.getSession().setAttribute("current_tab", "source_tab");
 				
 			} catch (Exception e) {
-				out.println("I would be redirecting here...");
-				e.printStackTrace(out);
-				response.sendError(500, e.getMessage());
+				log.write(e);
+				e.printStackTrace();
+				//e.printStackTrace(out);
+				//response.sendError(500, e.getMessage());
+				  request.getSession().setAttribute("wisardTable", new SmartList<Wisard>());
+				  request.getSession().setAttribute("current_tab", "source_tab");
 			} // end catch			
 			
 		} // end elsif("initialize")
@@ -402,38 +477,55 @@ public class NetworkManagementServlet extends HttpServlet {
 			
 			// --- begin command portion ---
 			for(Wisard w: wisards){
+				//if(w.getSite().equals("RTISNL-EXP249a-12")){
 				
-				// 1. acquire broker for the site wisard is deployed
-				// 2. make message payload
-				// 3. take hex value of relative id and add to command payload
-				// 4. make a message from payload
-				// 5. connect, publish message, disconnect
-
-				if(w.getSite().equals("RTISNL-EXP249a-12")){
-					// create new 
-					NetResetCommand cmd = new NetResetCommand(w, 0);
-					SmartList<ValidationIssue> issues = cmd.validate();
-					SmartList<ValidationIssue> errors = issues != null ? issues.where((ValidationIssue i) -> i.getType() == ValidationIssue.Type.ERROR):null;
-					SmartList<ValidationIssue> warnings = issues != null ? issues.where((ValidationIssue i) -> i.getType() == ValidationIssue.Type.WARNING):null;
-					// TO DO - replace with validator
-					if(warnings == null || warnings.size() == 0){
-						warnings.stream().map((ValidationIssue issue) -> issue.getMessage()).forEach(
-								(String warning) -> log.write(warning)
-						);
-					}
-					if(errors == null || errors.size() == 0){
-						errors.stream().map((ValidationIssue issue) -> issue.getMessage()).forEach(
-								(String error) -> log.write(error)
-						);
-					}
-					else{
-						cmd.runCommand();
-					}
+					// get the command type from the JSP page
+				
+					// get any parameters for the commands
+					
+					// create an object of the appropriate command class
+					NetManagementCommand cmd = new NetResetCommand(w, 0, 3600000);
+					
+					// get person from browser session
+					Person p = (Person) request.getSession().getAttribute("remoteUser");
+					
+					// create an array for all of the issues
+					SmartList<ValidationIssue> issues = Validator.validate(p ,cmd, w);
+					log.write("validating command");
+					
+					// perform validation for the command
+					try {
+						// add all validation warnings and errors to the message queue
+						SmartList<ValidationIssue> errors = issues != null ? issues.where((ValidationIssue i) -> i.getType() == ValidationIssue.Type.ERROR):null;
+						SmartList<ValidationIssue> warnings = issues != null ? issues.where((ValidationIssue i) -> i.getType() == ValidationIssue.Type.WARNING):null;
 						
-				}
-				else{
-					log.write("did not send command to wis " + w.getNetwork_id() + " at " + w.getSite() + " because site unavailable");
-				}
+						// if any warnings print them
+						if(warnings != null && warnings.size() > 0){
+							warnings.stream().map((ValidationIssue issue) -> issue.getMessage()).forEach(
+									(String warning) -> log.write(warning)
+							);
+						}
+						
+						// if any errors, print them
+						if(errors != null && errors.size() > 0){
+							errors.stream().map((ValidationIssue issue) -> issue.getMessage()).forEach(
+									(String error) -> log.write(error)
+							);
+						}
+						
+						// connect and send command
+						else{
+							cmd.runCommand();
+						}
+						
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}				
+				//}
+				//else{
+					//log.write("did not send command to wis " + w.getNetwork_id() + " at " + w.getSite() + " because site unavailable");
+				//}
 				/*
 				String pubTopic = "exp249a-12/cmd/siccs106-01";
 				int qos = 2;

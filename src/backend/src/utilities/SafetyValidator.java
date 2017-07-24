@@ -14,3 +14,13 @@ public class SafetyValidator {
 		return issues;
 	}
 }
+
+/* TO DO:
+	- perhaps expand this in the future to do:
+		command history
+		throttling
+		machine learning
+		etc.abstract
+	anything that is higher level than command level validation
+	would go here
+*/

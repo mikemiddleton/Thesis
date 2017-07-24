@@ -1,8 +1,13 @@
 package helpers;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import helpers.KeyValueObject;
+import utilities.ConnectionHandler;
+import edu.nau.rtisnl.SegaWebException;
+import helpers.SegaDB;
 
 public class Experiment {
 	private int experiment_id;
@@ -58,5 +63,18 @@ public class Experiment {
 
 	public void setManager_id(int manager_id) {
 		this.manager_id = manager_id;
+	}
+	
+	public static SmartList<Experiment> getAllExperiments()throws SQLException, SegaWebException, NullPointerException, IOException{
+		SegaDB sdb = new SegaDB();
+		sdb.init();
+		SmartList<Experiment> experiments = new SmartList<Experiment>();
+		ResultSet rs = sdb.getAllExperiment();
+		sdb.disconnect();
+		
+		while(rs.next()){
+			experiments.add(new Experiment(rs));
+		}
+		return experiments;
 	}
 }

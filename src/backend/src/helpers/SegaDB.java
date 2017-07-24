@@ -200,7 +200,7 @@ public class SegaDB{
 	 * @throws SegaWebException
 	 */
 	public ResultSet getSiteByName(String name) throws SQLException, SegaWebException{
-		String statement = "SELECT * FROM site WHERE site.site_id='" + name + "'"; // this is the query for the segav1_5 database
+		String statement = "SELECT * FROM site WHERE site.name='" + name + "'"; // this is the query for the segav1_5 database
 		ResultSet resultSet = conn.executeStatement(statement);
 		if(resultSet == null)
 			return null;
@@ -263,6 +263,17 @@ public class SegaDB{
 	}
 	
 	/*
+	 * returns a ResultSet of all deployment types
+	 */
+	public ResultSet getListOfDeploymentTypes() throws SQLException, SegaWebException{
+		String statement = "SELECT deployment_type_name FROM deployment_type;";
+		ResultSet resultSet = conn.executeStatement(statement);
+		if(resultSet == null)
+			return null;
+		return resultSet;
+	}
+	
+	/*
 	 * returns a ResultSet of all SP types
 	 */
 	public ResultSet getListOfSPTypes() throws SQLException, SegaWebException{
@@ -273,12 +284,42 @@ public class SegaDB{
 		return resultSet;
 	}
 	
+	/*
+	 * returns a list of all transducer types
+	 */
+	public ResultSet getListOfTransducerTypes() throws SQLException, SegaWebException{
+		String statement = "SELECT devicetype.name FROM devicetype WHERE devicetype.category='transducer_type'";
+		ResultSet resultSet = conn.executeStatement(statement);
+		if(resultSet == null)
+			return null;
+		return resultSet;
+	}
+	
+	public SmartList<String> getWisardTransducerTypes(Wisard w) throws SQLException, SegaWebException{
+		String statement = 
+				"SELECT devicetype.name " +
+				"FROM device " +
+					"INNER JOIN devicetype ON device.devicetype_id=devicetype.devicetype_id " +
+					"INNER JOIN deployment AS d1 ON device.device_id=d1.device_id " +
+					"INNER JOIN deployment AS d2 ON d1.parent_deploy_id=d2.deploy_id " +
+					"INNER JOIN deployment AS d3 ON d2.parent_deploy_id=d3.deploy_id " +
+					"WHERE devicetype.category='transducer_type' AND d3.device_id='" + w.getDevice_id() + "';";
+		ResultSet resultSet = conn.executeStatement(statement);
+		if(resultSet == null)
+			return null;
+		SmartList<String> transducers = new SmartList<String>();
+		while(resultSet.next()){
+			transducers.add(resultSet.getString("name"));
+		}
+		return transducers;
+	}
+	
 	/* 
 	 * returns result set of all registered wisards
 	 */
 	public ResultSet getAllWisards() throws SQLException, SegaWebException{
 		String statement = 
-				"SELECT device.device_id, device.serialnumber, description.text, device.hw_version, deployment.relative_id, site.name, devicetype.name " +
+				"SELECT device.device_id, device.serialnumber, description.text, device.hw_version, deployment.relative_id, site.name, site.state, devicetype.name " +
 				 "FROM device " +
 				  "LEFT JOIN description ON device.description_id=description.description_id " +
 				  "LEFT JOIN devicetype ON device.devicetype_id=devicetype.devicetype_id " + 
@@ -358,12 +399,12 @@ public class SegaDB{
 	 */
 	public ResultSet getAllActiveDeploymentsForPerson(Person p) throws SegaWebException{
 		String statement = 
-				"SELECT deployment.*" +
-				"FROM person" +
-					"LEFT JOIN permission_entity ON person.person_id=permission_entity.person_id" +
-					"LEFT JOIN permission ON permission_entity.permission_entity_id=permission.permission_entity_id" +
-					"LEFT JOIN permission_resource ON permission.permission_resource_id=permission_resource.permission_resource_id" +
-					"LEFT JOIN deployment ON permission_resource.deploy_id=deployment.deploy_id" +
+				"SELECT deployment.* " +
+				"FROM person " +
+					"LEFT JOIN permission_entity ON person.person_id=permission_entity.person_id " +
+					"LEFT JOIN permission ON permission_entity.permission_entity_id=permission.permission_entity_id " +
+					"LEFT JOIN permission_resource ON permission.permission_resource_id=permission_resource.permission_resource_id " +
+					"LEFT JOIN deployment ON permission_resource.deploy_id=deployment.deploy_id " +
 				"WHERE deployment.active='TRUE' AND permission.access_level!='' AND permission.access_level!='read' AND person.person_id='" + p.getPerson_id() +"'" +
 				"ORDER BY deployment.deploy_id asc;";
 		System.out.println(statement);
@@ -378,12 +419,12 @@ public class SegaDB{
 	 */
 	public ResultSet getAllPersonForDeployment(Deployment d) throws SegaWebException{
 		String statement = 
-				"SELECT person.*" +
-				"FROM person" +
-					"LEFT JOIN permission_entity ON person.person_id=permission_entity.person_id" +
-					"LEFT JOIN permission ON permission_entity.permission_entity_id=permission.permission_entity_id" +
-					"LEFT JOIN permission_resource ON permission.permission_resource_id=permission_resource.permission_resource_id" +
-					"LEFT JOIN deployment on permission_resource.deploy_id=deployment.deploy_id" +
+				"SELECT person.* " +
+				"FROM person " +
+					"LEFT JOIN permission_entity ON person.person_id=permission_entity.person_id " +
+					"LEFT JOIN permission ON permission_entity.permission_entity_id=permission.permission_entity_id " +
+					"LEFT JOIN permission_resource ON permission.permission_resource_id=permission_resource.permission_resource_id " +
+					"LEFT JOIN deployment on permission_resource.deploy_id=deployment.deploy_id " +
 				"WHERE permission.access_level!='' AND permission.access_level!='read' AND deployment.deploy_id = '" + d.getDeploymentID() + "'" +
 				"ORDER BY person.person_id asc;";
 		System.out.println(statement);
@@ -397,14 +438,14 @@ public class SegaDB{
 	 */
 	public ResultSet getAllPersonsForWisardDeployment(Wisard w) throws SegaWebException{
 		String statement = 
-				"SELECT person.*" +
-				"FROM person" +
-					"LEFT JOIN permission_entity ON person.person_id=permission_entity.person_id" +
-					"LEFT JOIN permission ON permission_entity.permission_entity_id=permission.permission_entity_id" +
-					"LEFT JOIN permission_resource ON permission.permission_resource_id=permission_resource.permission_resource_id" +
-					"LEFT JOIN deployment on permission_resource.deploy_id=deployment.deploy_id" +
-					"LEFT JOIN device on deployment.device_id=device.device_id" +
-					"LFET JOIN devicetype on device.devicetype_id=devicetypte.devicetype_id" +
+				"SELECT person.* " +
+				"FROM person " +
+					"LEFT JOIN permission_entity ON person.person_id=permission_entity.person_id " +
+					"LEFT JOIN permission ON permission_entity.permission_entity_id=permission.permission_entity_id " +
+					"LEFT JOIN permission_resource ON permission.permission_resource_id=permission_resource.permission_resource_id " +
+					"LEFT JOIN deployment on permission_resource.deploy_id=deployment.deploy_id " +
+					"LEFT JOIN device on deployment.device_id=device.device_id " +
+					"LEFT JOIN devicetype on device.devicetype_id=devicetype.devicetype_id " +
 				"WHERE devicetype.name='CP' AND permission.access_level!='' AND permission.access_level!='read' AND deployment.relative_id= '" + w.getNetwork_id() + "'" +
 				"ORDER BY person.person_id asc;";
 		System.out.println(statement);
@@ -452,12 +493,12 @@ public class SegaDB{
 	 */
 	public ResultSet getWisardExperiments(Wisard w) throws SegaWebException{
 		String statement = 
-				"SELECT experiment.*" + 
-				"FROM experiment" +
-					"LEFT JOIN experiment_resource ON experiment_resource.experiment_id=experiment.experiment_id" +
-					"LEFT JOIN deployment ON experiment_resource.deploy_id=deployment.deploy_id" +
-					"LEFT JOIN device ON deployment.device_id=device.device_id" +
-					"LEFT JOIN devicetype ON device.devicetype_id=devicetype.devicetype_id" +
+				"SELECT experiment.* " + 
+				"FROM experiment " +
+					"LEFT JOIN experiment_resource ON experiment_resource.experiment_id=experiment.experiment_id " +
+					"LEFT JOIN deployment ON experiment_resource.deploy_id=deployment.deploy_id " +
+					"LEFT JOIN device ON deployment.device_id=device.device_id " +
+					"LEFT JOIN devicetype ON device.devicetype_id=devicetype.devicetype_id " +
 				"WHERE devicetype.name='CP' AND deployment.active='TRUE' AND deployment.relative_id='" + w.getNetwork_id() + "'" +
 				"ORDER BY experiment.experiment_id asc;";
 		System.out.println(statement);
@@ -476,5 +517,53 @@ public class SegaDB{
 		if(rs == null)
 			return null;
 		return rs;
+	}
+	
+	/*
+	 * returns a result set of all experiments
+	 */
+	public ResultSet getAllExperiment() throws SegaWebException{
+		String statement = "SELECT experiment.name, experiment.experiment_id FROM experiment;";
+		ResultSet resultSet = conn.executeStatement(statement);
+		if(resultSet == null)
+			return null;
+		return resultSet;
+	}
+	
+	/*
+	 * returns the role of a wisard
+	 */
+	public String getRoleByWisard(Wisard w) throws SegaWebException, SQLException{
+		String role;
+		String statement = "SELECT devicetype.name " +
+						    "FROM devicetype " +
+								"INNER JOIN device ON devicetype.devicetype_id=device.devicetype_id " +
+								"WHERE device.device_id='" + w.getDevice_id() + "' AND devicetype.category='cp_role';";
+		ResultSet rs = conn.executeStatement(statement);
+		rs.next();
+		
+		if(rs == null)
+			return null;
+		
+		role = rs.getString("name");
+		return role;
+	}
+	
+	/*
+	 * returns the deployment type of a wisard
+	 */
+	public String getDeploymentTypeOfWisard(Wisard w) throws SegaWebException, SQLException{
+		String type;
+		String statement = "SELECT deployment_type.deployment_type_name " + 
+						   "FROM deployment_type " + 
+						   "INNER JOIN deployment ON deployment_type.deployment_type_id=deployment.deployment_type_id " +
+						   "INNER JOIN device ON deployment.device_id=device.device_id " +
+						   "WHERE device.device_id='" + w.getDevice_id() + "';";
+		ResultSet rs = conn.executeStatement(statement);
+		rs.next();
+		if(rs == null)
+			return null;
+		type = rs.getString("deployment_type_name");
+		return type;
 	}
 }

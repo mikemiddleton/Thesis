@@ -21,13 +21,14 @@ public class Wisard implements IPermissionResource, Serializable {
 	private String hw_version;
 	private int network_id;
 	private String site;
+	private String state;
 	//private String broker;
 	//private String role;
 	
 	/*
 	 * constructor method for wisard objects which takes in attributes
 	 */
-	public Wisard(int dev_id, String serial, String desc, String ver, int net_id, String s, String r) throws SQLException{
+	public Wisard(int dev_id, String serial, String desc, String ver, int net_id, String s, String r, String st) throws SQLException{
 		// assign values from Result set to member variables
 		device_id = dev_id;
 		serial_id = serial;
@@ -35,6 +36,7 @@ public class Wisard implements IPermissionResource, Serializable {
 		hw_version = ver;
 		network_id = net_id;
 		site = s;
+		state = st;
 		//role = r;
 	}
 	
@@ -48,7 +50,16 @@ public class Wisard implements IPermissionResource, Serializable {
 		this.setHw_version(rs.getString("hw_version"));
 		this.setNetwork_id(rs.getInt("relative_id"));
 		this.setSite(rs.getString("name"));
+		this.setState(rs.getString("state"));
 		//this.setRole(rs.getString("name"));
+	}
+	
+	public void setState(String s){
+		state = s;
+	}
+	
+	public String getState(){
+		return state;
 	}
 	
 	/* wisard id setter */
@@ -124,7 +135,7 @@ public class Wisard implements IPermissionResource, Serializable {
 	}
 	
 	/*
-	 * get all experiments
+	 * gets a list of all experiments a WiSARD is a part of
 	 */
 	public SmartList<Experiment> getExperiments() throws NullPointerException, IOException, SegaWebException, SQLException{
 		SegaDB sdb = new SegaDB();
@@ -152,11 +163,37 @@ public class Wisard implements IPermissionResource, Serializable {
 	public void setRole(String r){
 		role = r;
 	}
+	*/
 	
-	public String getRole(){
+	/*
+	 * gets the role of a wisard
+	 */
+	public String getRole()throws NullPointerException, IOException, SegaWebException, SQLException{
+		SegaDB sdb = new SegaDB();
+		sdb.init();
+		String role = sdb.getRoleByWisard(this);
+		if(role == null)
+			role = "";
 		return role;
 	}
-	*/
+	
+	/*
+	 * gets the deployment type of a wisard
+	 */
+	public String getDeploymentType() throws NullPointerException, IOException, SegaWebException, SQLException{
+		SegaDB sdb = new SegaDB();
+		sdb.init();
+		String type = sdb.getDeploymentTypeOfWisard(this);
+		return type;
+	}
+	
+	public SmartList<String> getTransducerTypes() throws NullPointerException, IOException, SegaWebException, SQLException{
+		SegaDB sdb = new SegaDB();
+		sdb.init();
+		SmartList<String> transducers = sdb.getWisardTransducerTypes(this);
+		return transducers;
+	}
+	
 	
 	/*
 	 *  gets and returns an SmartList of child SP objects for this wisard
@@ -222,6 +259,7 @@ public class Wisard implements IPermissionResource, Serializable {
 		//sl.forEach((Wisard w) -> System.out.println(w));
 		return sl.where((Wisard w) -> (w.getAttachedSPs().where((SP sp) -> "ST".equals(sp.getSPType())).size() > 0 ));
 	}
+	
 
 	@Override
 	public SmartList<Person> getAllPersons() throws SQLException, SegaWebException, NullPointerException, IOException {

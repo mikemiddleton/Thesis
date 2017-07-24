@@ -11,6 +11,7 @@ import helpers.Site;
 import helpers.SmartList;
 import helpers.ValidationIssue;
 import helpers.Wisard;
+import helpers.Experiment;
 
 public abstract class NetManagementCommand {
 
@@ -35,7 +36,7 @@ public abstract class NetManagementCommand {
 	public abstract byte[] getPayload(byte hub_hi, byte hub_lo, byte dest_hi, byte dest_lo);
 	public abstract SmartList<ValidationIssue> validate(Wisard w);
 	public abstract SmartList<ValidationIssue> validate(Site s, Wisard w);
-	public abstract SmartList<ValidationIssue> validate(Experiment e, Wisard w);
+	public abstract SmartList<ValidationIssue> validate(helpers.Experiment e, Wisard w);
 	
 	public void runCommand(){
 		// 1. acquire broker for the site wisard is deployed

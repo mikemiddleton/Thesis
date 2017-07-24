@@ -252,9 +252,18 @@
                 <td align="right"><span class="data_select_label">Experiment Select:</span></td>
                 <td align="right" valign="middle"><input type="hidden" name="current_tab" value="source_tab" />
                   <div class="data_select">
-                  <select id="exp_selection" class="sega_form_item" name="data_exp_selection">
+                  <select id="experiment_selection" class="sega_form_item" name="data_exp_selection">
                     <option value="" disabled="true" selected="true">Select an Experiment...</option>
-                    <option value="reset">Reset Command</option>
+                    <c:forEach var="experiment" items="${experiments}">
+                      <c:choose>
+                        <c:when test="${!empty selectedExperiments and experiment.key eq selectedExperiments}">
+                          <option value="${experiment.key}" selected="true">${experiment.value}</option>
+                        </c:when>
+                        <c:otherwise>
+                          <option value="${experiment.key}">${experiment.value}</option>
+                        </c:otherwise>
+                      </c:choose>
+                    </c:forEach>
                   </select>
                   </div>
                 <td>
@@ -271,7 +280,16 @@
                   <div class="data_select">
                   <select id="transducer_selection" class="sega_form_item" name="data_transducer_selection">
                     <option value="" disabled="true" selected="true">Select a Transducer Type...</option>
-                    <option value="reset">Reset Command</option>
+                    <c:forEach var="transducertype" items="${transducertypes}">
+                      <c:choose>
+                        <c:when test="${!empty selectedTransducer and transducer.key eq selectedTransducer}">
+                          <option value="${transducertype.key}" selected="true">${transducertype.value}</option>
+                        </c:when>
+                        <c:otherwise>
+                          <option value="${transducertype.key}">${transducertype.value}</option>
+                        </c:otherwise>
+                      </c:choose>
+                    </c:forEach>                    
                   </select>
                   </div>
                 <td>
@@ -286,9 +304,18 @@
                 <td align="right"><span class="data_select_label">Deployment Type Select:</span></td>
                 <td align="right" valign="middle"><input type="hidden" name="current_tab" value="source_tab" />
                   <div class="data_select">
-                  <select id="depl_selection" class="sega_form_item" name="data_depl_selection">
+                  <select id="deploymenttype_selection" class="sega_form_item" name="data_deploymenttype_selection">
                     <option value="" disabled="true" selected="true">Select a Deployment Type...</option>
-                    <option value="reset">Reset Command</option>
+                     <c:forEach var="deploymenttype" items="${deploymenttypes}">
+                        <c:choose>
+                          <c:when test="${!empty selectedDeploymenttype and deploymenttype.key eq selectedDeploymenttype}">
+                            <option value="${deploymenttype.key}" selected="true">${deploymenttype.value}</option>
+                          </c:when>
+                          <c:otherwise>
+                            <option value="${deploymenttype.key}">${deploymenttype.value}</option>
+                          </c:otherwise>
+                        </c:choose>
+                      </c:forEach>  
                   </select>
                   </div>
                 <td>
@@ -466,6 +493,7 @@
 </div>
 </c:when>
 <c:otherwise>
+  <div>
   <div class="form_content_wrapper">
   <h2>Please Log In to Access This Tool</h2>
   </div>
@@ -614,6 +642,42 @@ function attachMarkerInfo(marker,garden){
   });
 }
 
+function doWatch(){
+  $.ajax({
+    type: 'POST',
+    url: 'http://pi249a-04.egr.nau.edu:8080/segaWeb/CommandWatcherServlet',
+    data: {start: true},
+    cache: false
+  })
+  .done(function(data){
+    console.log(data);
+    var task = setInterval(function(){
+      $.ajax({
+        type: 'GET',
+        url: 'http://pi249a-04.egr.nau.edu:8080/segaWeb/CommandWatcherServlet',
+        cache: false
+      })
+      .done(function(data2){
+        console.log(data2);
+        if(data2.includes('test test...')){
+          clearInterval(task);
+          $.ajax({
+            type: 'POST',
+            url: 'http://pi249a-04.egr.nau.edu:8080/segaWeb/CommandWatcherServlet',
+            data: {stop: true},
+            cache: false
+          })
+          .done(function(data3){
+            console.log(data3);
+          });
+        }
+      });      
+    }, 5000);
+  });
+}
+
+
+
 $( document ).ready(function() {
 
   <c:if test="${empty initialize}">
@@ -638,6 +702,7 @@ $( document ).ready(function() {
   </c:if>
   <c:if test="${current_tab=='request_tab'}">
     openTab(3);
+    doWatch();
   </c:if>
 
 

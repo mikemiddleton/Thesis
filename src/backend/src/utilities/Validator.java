@@ -9,7 +9,7 @@ import utilities.SafetyValidator;
 
 public class Validator {
 	
-	public SmartList<ValidationIssue> validateAll(Person p, NetManagementCommand cmd, SmartList<Wisard> slw){
+	public static SmartList<ValidationIssue> validateAll(Person p, NetManagementCommand cmd, SmartList<Wisard> slw){
 		SmartList<ValidationIssue> issues = new SmartList<ValidationIssue>();
 		for(Wisard w: slw){
 			issues.addAll(validate(p, cmd, w));
@@ -17,18 +17,17 @@ public class Validator {
 		return issues;
 	}
 	
-	public SmartList<ValidationIssue> validate(Person p, NetManagementCommand cmd, Wisard w){
+	public static SmartList<ValidationIssue> validate(Person p, NetManagementCommand cmd, Wisard w){
 		SmartList<ValidationIssue> issues = new SmartList<ValidationIssue>();
 		
 		// validate user access
 		boolean permission = UserAccessValidator.validate(p, w);
 		if(!permission){
-			issues.add(new ValidationIssue("The user does not have permission to access this WiSARD", ValidationIssue.Type.ERROR));
+			issues.add(new ValidationIssue("User " + p.getPerson_id() +   " does not have permission to access device " + w.getDevice_id(), ValidationIssue.Type.ERROR));
 		}
 		else{
 			issues.addAll(SafetyValidator.validate(cmd, w));
 		}
-		
 		return issues;
 	}
 }

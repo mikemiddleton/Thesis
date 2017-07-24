@@ -4,6 +4,7 @@ import helpers.Site;
 import helpers.SmartList;
 import helpers.ValidationIssue;
 import helpers.Wisard;
+import helpers.Experiment;
 import utilities.PacketGenerator;
 
 public class SetSamplingRate extends NetManagementCommand {
@@ -54,8 +55,9 @@ public class SetSamplingRate extends NetManagementCommand {
 	}
 
 	@Override
-	public SmartList<ValidationIssue> validate(Experiment e, Wisard w) {
+	public SmartList<ValidationIssue> validate(helpers.Experiment e, Wisard w) {
 		return new SmartList<ValidationIssue>();
 	}
+
 
 }

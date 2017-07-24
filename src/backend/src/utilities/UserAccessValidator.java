@@ -12,7 +12,8 @@ public class UserAccessValidator {
 	
 	public static boolean validate(Person person, IPermissionResource resource){
 		try {
-			return resource.getAllPersons().stream().anyMatch((Person p) -> p.getPerson_id() == person.getPerson_id());
+			System.out.println("validation " + person.getPerson_id());
+			return resource.getAllPersons().stream().anyMatch((Person p) -> {System.out.println(p.getPerson_id()); return p.getPerson_id() == person.getPerson_id();});
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;

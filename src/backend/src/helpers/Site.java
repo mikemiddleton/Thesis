@@ -19,13 +19,13 @@ public class Site {
 	private String ip_address;
 	
 	public Site(ResultSet rs) throws SQLException{
+		this.setState(rs.getString("state"));
 		this.setSite_id(rs.getInt("site_id"));
 		this.setName(rs.getString("name"));
 		this.setLat_long((PGpoint)rs.getObject("lat_long"));
 		this.setLocal_origin((PGpoint)rs.getObject("local_origin"));
 		this.setElevation_m(rs.getDouble("elevation_m"));
 		this.setSite_code(rs.getString("site_code"));
-		this.setState(rs.getString("state"));
 		this.setCounty(rs.getString("county"));
 		this.setDescription_id(rs.getInt("description_id"));
 		this.setIp_address(rs.getString("ip_address"));
