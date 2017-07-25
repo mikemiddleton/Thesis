@@ -40,7 +40,14 @@
     -webkit-box-sizing:content-box; 
     box-sizing:content-box;
   }
+  #wisard_serial_selection{
+    width: 100%;
+  }
+  #network_id_selection{
+    width: 100%;
+  }
   </style>
+
 
   <!--
   <script src="/segaWeb/media/js/jquery/jquery-1.11.0.min.js"></script>
@@ -111,11 +118,11 @@
             <form id="getGardenSites" name="getGardenSites" action="/segaWeb/NetworkManagementServlet" method="post">
 
               <tr>
-                <td align="right"><span class="data_select_label">Site Select:</span></td>
+                <td align="right"><span class="data_select_label">Site:</span></td>
                 <td align="right" valign="middle"><input type="hidden" name="current_tab" value="source_tab" />
                 <div class="data_select">  
                 <select id="site_selection" class="sega_form_item" name="data_site_selection">
-                  <option value="" disabled="true" selected="true">Select a site...</option>
+                  <option value="" selected="true">Select a site...</option>
                     <c:forEach var="site" items="${sites}">
                       <c:choose>
                         <c:when test="${!empty selectedGardenSite and site.key eq selectedGardenSite}">
@@ -138,11 +145,11 @@
                     <!-- State Selection -->
             
               <tr>
-                <td align="right"><span class="data_select_label">State Select:</span></td>
+                <td align="right"><span class="data_select_label">State:</span></td>
                 <td align="right" valign="middle"><input type="hidden" name="current_tab" value="source_tab" /> 
                 <div class="data_select">                 
                 <select id="state_selection" class="sega_form_item" name="data_state_selection">
-                  <option value="" disabled="true" selected="true">Select a state...</option>
+                  <option value="" selected="true">Select a state...</option>
                   <c:forEach var="state" items="${states}">
                     <c:choose>
                       <c:when test="${!empty selectedState and state.key eq selectedState}">
@@ -195,11 +202,11 @@
               <!-- CP Role Select -->
               
               <tr>
-                <td align="right"><span class="data_select_label">WiSARD Role Select:</span></td>
+                <td align="right"><span class="data_select_label">WiSARD Role:</span></td>
                 <td align="right" valign="middle"><input type="hidden" name="current_tab" value="source_tab" />
                   <div class="data_select">
                   <select id="cprole_selection" class="sega_form_item" name="data_cprole_selection">
-                    <option value="" disabled="true" selected="true">Select a CP Role...</option>
+                    <option value="" selected="true">Select a CP Role...</option>
                     <c:forEach var="cprole" items="${cproles}">
                       <c:choose>
                         <c:when test="${!empty selectedCPRole and cprole.key eq selectedCPRole}">
@@ -222,11 +229,11 @@
 
               <!-- SP Type Select -->
               <tr>
-                <td align="right"><span class="data_select_label">SP Type Select:</span></td>
+                <td align="right"><span class="data_select_label">SP Type:</span></td>
                 <td align="right" valign="middle"><input type="hidden" name="current_tab" value="source_tab" />
                   <div class="data_select">
                   <select id="sptype_selection" class="sega_form_item" name="data_sptype_selection">
-                    <option value="" disabled="true" selected="true">Select an SP Type...</option>
+                    <option value="" selected="true">Select an SP Type...</option>
                     <c:forEach var="sptype" items="${sptypes}">
                       <c:choose>
                         <c:when test="${!empty selectedSPTypes and sptype.key eq selectedSPTypes}">
@@ -249,11 +256,11 @@
 
               <!-- Experiment -->
               <tr>
-                <td align="right"><span class="data_select_label">Experiment Select:</span></td>
+                <td align="right"><span class="data_select_label">Experiment:</span></td>
                 <td align="right" valign="middle"><input type="hidden" name="current_tab" value="source_tab" />
                   <div class="data_select">
                   <select id="experiment_selection" class="sega_form_item" name="data_exp_selection">
-                    <option value="" disabled="true" selected="true">Select an Experiment...</option>
+                    <option value="" selected="true">Select an Experiment...</option>
                     <c:forEach var="experiment" items="${experiments}">
                       <c:choose>
                         <c:when test="${!empty selectedExperiments and experiment.key eq selectedExperiments}">
@@ -275,11 +282,11 @@
 
               <!-- Transducer Type -->
               <tr>
-                <td align="right"><span class="data_select_label">Transducer Select:</span></td>
+                <td align="right"><span class="data_select_label">Transducer:</span></td>
                 <td align="right" valign="middle"><input type="hidden" name="current_tab" value="source_tab" />
                   <div class="data_select">
                   <select id="transducer_selection" class="sega_form_item" name="data_transducer_selection">
-                    <option value="" disabled="true" selected="true">Select a Transducer Type...</option>
+                    <option value="" selected="true">Select a Transducer Type...</option>
                     <c:forEach var="transducertype" items="${transducertypes}">
                       <c:choose>
                         <c:when test="${!empty selectedTransducer and transducer.key eq selectedTransducer}">
@@ -301,11 +308,11 @@
 
               <!-- Deployment Type -->
               <tr>
-                <td align="right"><span class="data_select_label">Deployment Type Select:</span></td>
+                <td align="right"><span class="data_select_label">Deployment Type:</span></td>
                 <td align="right" valign="middle"><input type="hidden" name="current_tab" value="source_tab" />
                   <div class="data_select">
                   <select id="deploymenttype_selection" class="sega_form_item" name="data_deploymenttype_selection">
-                    <option value="" disabled="true" selected="true">Select a Deployment Type...</option>
+                    <option value="" selected="true">Select a Deployment Type...</option>
                      <c:forEach var="deploymenttype" items="${deploymenttypes}">
                         <c:choose>
                           <c:when test="${!empty selectedDeploymenttype and deploymenttype.key eq selectedDeploymenttype}">
@@ -327,8 +334,8 @@
 
               <!-- Wis Serial ID entry -->
               <tr>
-                <td align="left"><span class="data_select_label">WiSARD Serial Entry:</span></td>
-                <td align="left" valign="middle"><input type="text" name="wisard_serial_selection" id="wisard_serial_selection" value="" /></td>
+                <td align="right"><span class="data_select_label">WiSARD Serial ID:</span></td>
+                <td align="left" valign="middle"><input placeholder="ex: 01011600000000FF" type="text" name="wisard_serial_selection" id="wisard_serial_selection" value="" /></td>
                 <td>
                   <div class="query_icon_wrapper">
                     <img src="${pageContext.request.contextPath}/images/icons/item_icons/info_icon.png" class="query_icon_image" id="site_select_info" onClick="getDescById('dom_description_strings',this.id);" style="cursor:pointer;" title="Info">
@@ -338,8 +345,8 @@
 
               <!-- Wis Network ID entry -->
               <tr>
-                <td align="left"><span class="data_select_label">WiSARD Net-ID Entry:</span></td>
-                <td align="left" valign="middle"><input type="text" name="network_id_selection" id="network_id_selection" value="" /></td>
+                <td align="right"><span class="data_select_label">WiSARD Net-ID:</span></td>
+                <td align="left" valign="middle"><input placeholder="ex: 15" type="text" name="network_id_selection" id="network_id_selection" value="" /></td>
                 <td>
                   <div class="query_icon_wrapper">
                     <img src="${pageContext.request.contextPath}/images/icons/item_icons/info_icon.png" class="query_icon_image" id="site_select_info" onClick="getDescById('dom_description_strings',this.id);" style="cursor:pointer;" title="Info">
@@ -676,7 +683,26 @@ function doWatch(){
   });
 }
 
-
+// https://stackoverflow.com/questions/278089/javascript-to-sort-contents-of-select-element
+function sortSelect(selElem) {
+    var text = selElem.options[0].text;
+    selElem.options[0].text = "";
+    var tmpAry = new Array();
+    for (var i=0;i<selElem.options.length;i++) {
+        tmpAry[i] = new Array();
+        tmpAry[i][0] = selElem.options[i].text;
+        tmpAry[i][1] = selElem.options[i].value;
+    }
+    tmpAry.sort();
+    while (selElem.options.length > 0) {
+        selElem.options[0] = null;
+    }
+    for (var i=0;i<tmpAry.length;i++) {
+        var op = new Option(tmpAry[i][0], tmpAry[i][1]);
+        selElem.options[i] = op;
+    }
+    selElem.options[0].text = text;
+}
 
 $( document ).ready(function() {
 
@@ -689,7 +715,8 @@ $( document ).ready(function() {
 
     beforeActivate: function(event, ui) {
       //console.log($("#accordion").find(".accordion_header").index($(".accordion_header#" + ui.newHeader.attr('id'))));
-      progressBar($("#accordion").find(".accordion_header").index($(".accordion_header#" + ui.newHeader.attr('id'))));
+      //progressBar($("#accordion").find(".accordion_header").index($(".accordion_header#" + ui.newHeader.attr('id'))));
+      progressBar($("#accordion").find(".accordion_header").index($(ui.newHeader)));
     }
 
   });
@@ -704,6 +731,17 @@ $( document ).ready(function() {
     openTab(3);
     doWatch();
   </c:if>
+
+  var menues = ["site_selection",
+                "state_selection",
+                "cprole_selection",
+                "sptype_selection",
+                "experiment_selection",
+                "transducer_selection",
+                "deploymenttype_selection"];
+
+  for(var i in menues)
+    sortSelect(document.getElementById(menues[i]));
 
 
 var oTable = $(".channel_table_class").dataTable();

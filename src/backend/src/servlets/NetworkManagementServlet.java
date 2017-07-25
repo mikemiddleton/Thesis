@@ -299,41 +299,49 @@ public class NetworkManagementServlet extends HttpServlet {
 			  while(resultSet_sites.next()){
 				  results_sites.add(new KeyValueObject(resultSet_sites.getObject("name").toString(),resultSet_sites.getObject("name").toString()));
 			  }
+			  results_sites.sort((KeyValueObject o1, KeyValueObject o2)-> ((String)(o1.getValue())).compareTo( (String)(o2.getValue()) ));
 			  
 			  // add states to results
 			  while(resultSet_states.next()){
 				  results_states.add(new KeyValueObject(resultSet_states.getObject("state").toString(), resultSet_states.getObject("state").toString()));
 			  }
+			  results_states.sort((KeyValueObject o1, KeyValueObject o2)-> ((String)(o1.getValue())).compareTo( (String)(o2.getValue()) ));
 			  
 			  // add cproles to results
 			  while(resultSet_cproles.next()){
 				  results_cproles.add(new KeyValueObject(resultSet_cproles.getObject("name").toString(), resultSet_cproles.getObject("name").toString()));
 			  }
+			  results_cproles.sort((KeyValueObject o1, KeyValueObject o2)-> ((String)(o1.getValue())).compareTo( (String)(o2.getValue()) ));
 			  
 			  // add sptypes to results
 			  while(resultSet_sptypes.next()){
 				  results_sptypes.add(new KeyValueObject(resultSet_sptypes.getObject("name").toString(), resultSet_sptypes.getObject("name").toString()));
 			  }
+			  results_sptypes.sort((KeyValueObject o1, KeyValueObject o2)-> ((String)(o1.getValue())).compareTo( (String)(o2.getValue()) ));
 			  
 			  // add gardenservers to results
 			  while(resultSet_gardenservers.next()){
 				  results_gardenservers.add(new KeyValueObject(resultSet_gardenservers.getObject("sitename").toString(), resultSet_gardenservers.getObject("sitename").toString()));
 			  }
+			  results_gardenservers.sort((KeyValueObject o1, KeyValueObject o2)-> ((String)(o1.getValue())).compareTo( (String)(o2.getValue()) ));
 			  
 			  // add experiments
 			  while(resultSet_experiments.next()){
 				  results_experiments.add(new KeyValueObject(resultSet_experiments.getObject("name").toString(), resultSet_experiments.getObject("name").toString()));
 			  }
+			  results_experiments.sort((KeyValueObject o1, KeyValueObject o2)-> ((String)(o1.getValue())).compareTo( (String)(o2.getValue()) ));
 			  
 			  // add transducertypes
 			  while(resultSet_transducertypes.next()){
 				  results_transducertypes.add(new KeyValueObject(resultSet_transducertypes.getObject("name").toString(), resultSet_transducertypes.getObject("name").toString()));
 			  }
+			  results_transducertypes.sort((KeyValueObject o1, KeyValueObject o2)-> ((String)(o1.getValue())).compareTo( (String)(o2.getValue()) ));
 			  
 			  // add deploymenttypes
 			  while(resultSet_deploymenttypes.next()){
 				  results_deploymenttypes.add(new KeyValueObject(resultSet_deploymenttypes.getObject("deployment_type_name").toString(), resultSet_deploymenttypes.getObject("deployment_type_name").toString()));
 			  }
+			  results_deploymenttypes.sort((KeyValueObject o1, KeyValueObject o2)-> ((String)(o1.getValue())).compareTo( (String)(o2.getValue()) ));
 			  
 			  // set attributes
 			  request.getSession().setAttribute("sites", results_sites);

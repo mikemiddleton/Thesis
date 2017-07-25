@@ -186,7 +186,7 @@ public class SegaDB{
 	 * @throws SegaWebException
 	 */
 	public ResultSet getListOfSites() throws SQLException, SegaWebException{
-		String statement = "SELECT site.site_id, site.name FROM site"; // this is the query for the segav1_5 database
+		String statement = "SELECT site.site_id, site.name FROM site ORDER BY name asc"; // this is the query for the segav1_5 database
 		ResultSet resultSet = conn.executeStatement(statement);
 		if(resultSet == null)
 			return null;
