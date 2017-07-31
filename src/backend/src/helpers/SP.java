@@ -14,17 +14,19 @@ public class SP{
 	private String slot;
 	private String type;
 	private String hw_version;
+	private boolean active;
 	
 	/*
 	 *  SP constructor which takes in all attributes separately
 	 */
-	public void SP(int dev, String serial, Wisard wis, String slot, String type, String hw_ver){
+	public void SP(int dev, String serial, Wisard wis, String slot, String type, String hw_ver, boolean active){
 		device_id = dev;
 		serial_id = serial;
 		parent = wis;
 		this.slot = slot;
 		this.type = type;
 		hw_version = hw_ver;
+		this.active = active;
 	}	
 	
 	/*
@@ -36,7 +38,16 @@ public class SP{
 		this.setHWVersion(rs.getString("hw_version"));
 		this.setSlot(rs.getString("relative_id"));
 		this.setType(rs.getString("name"));
+		this.setActive(rs.getBoolean("active"));
 	}	
+	
+	public boolean getActive(){
+		return active;
+	}
+	
+	public void setActive(boolean active){
+		this.active = active;
+	}
 	
 	/* Device ID getter */
 	public int getDeviceID(){

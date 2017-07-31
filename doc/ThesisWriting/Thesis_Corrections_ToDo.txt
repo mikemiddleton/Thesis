@@ -1,0 +1,20 @@
+THESIS - TO DO:
+
+- Dr Palmer's corrections
+
+- Greenhouse Experiment Agent
+	- write agent
+	- test it
+	- Appendix: user's guide
+
+- Parameters in UI
+	- correctly get UI working for each command class
+
+- More snapshots/Better descriptions
+	- include screenshots of updated UI 
+	- better descriptions of how each page works
+
+- Performance Evaluation
+	- scalability, # users/conflicting
+	- handle scalability?
+	- overhead of system

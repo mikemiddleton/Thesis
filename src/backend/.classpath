@@ -30,5 +30,6 @@
 	<classpathentry kind="lib" path="mysql-connector-java-5.0.8-bin.jar"/>
 	<classpathentry kind="lib" path="postgresql-9.4-1201.jdbc4.jar"/>
 	<classpathentry kind="lib" path="org.eclipse.paho.client.mqttv3-1.1.0.jar"/>
+	<classpathentry kind="lib" path="commons-codec-1.10.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

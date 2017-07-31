@@ -341,7 +341,7 @@ public class NetworkManagementServlet extends HttpServlet {
 			  while(resultSet_deploymenttypes.next()){
 				  results_deploymenttypes.add(new KeyValueObject(resultSet_deploymenttypes.getObject("deployment_type_name").toString(), resultSet_deploymenttypes.getObject("deployment_type_name").toString()));
 			  }
-			  results_deploymenttypes.sort((KeyValueObject o1, KeyValueObject o2)-> ((String)(o1.getValue())).compareTo( (String)(o2.getValue()) ));
+			  results_sites.sort((KeyValueObject o1, KeyValueObject o2)-> ((String)(o1.getValue())).compareTo( (String)(o2.getValue()) ));
 			  
 			  // set attributes
 			  request.getSession().setAttribute("sites", results_sites);
@@ -384,7 +384,7 @@ public class NetworkManagementServlet extends HttpServlet {
 				
 				// filter based on sp-type
 				if(!(request.getParameter("data_sptype_selection") == null) && !(request.getParameter("data_sptype_selection").equals("")))
-					wisards = wisards.where((Wisard w) -> (w.getAttachedSPs().where((SP sp) -> request.getParameter("data_sptype_selection").equals(sp.getSPType())).size() > 0 ));
+					wisards = wisards.where((Wisard w) -> (w.getAttachedSPs().where((SP sp) -> request.getParameter("data_sptype_selection").equals(sp.getSPType()) && sp.getActive()).size() > 0 ));
 
 				
 				// filter based on wisard relative id
@@ -523,6 +523,7 @@ public class NetworkManagementServlet extends HttpServlet {
 						
 						// connect and send command
 						else{
+							System.out.println("About to run cmd");
 							cmd.runCommand();
 						}
 						
@@ -718,7 +719,20 @@ public class NetworkManagementServlet extends HttpServlet {
 				//out.println("I would be redirecting here...");
 				//response.sendRedirect(redirect);
 			//}
+			ArrayList<Integer> ids = new ArrayList<Integer>(); 
+			for(Wisard w: wisards){
+				ids.add(w.getNetwork_id());
+			}
+			request.getSession().setAttribute("wisardTable", wisards);
+			request.getSession().setAttribute("wisardIDs", ids);
+			String redirect = "/results.jsp";
+			request.getRequestDispatcher(redirect).forward(request, response);
+			//response.sendRedirect(redirect);
+			return;
+		
 		} // end else
+		
+		
 		
 		//request.getSession().setAttribute("current_tab", "view_tab");
 		//String redirect = request.getParameter("redirect");

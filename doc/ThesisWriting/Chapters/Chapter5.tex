@@ -29,7 +29,7 @@ Figure \ref{fig:wisard_browser_flow} shows the flow of execution for this module
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/flow_diagram_wisard_browser.png}
-	\caption{Flow of actions performed by Wisard\_Browser\_Module}
+	\caption{A flow diagram showing the actions performed by Wisard\_Browser\_Module to obtain a list of WiSARDs based on user specified search criteria.}
 	\label{fig:wisard_browser_flow}
 \end{figure}
 
@@ -59,7 +59,7 @@ A JSP web page provides a simple interface for the user to populate an HTML form
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/jsp_ui_select.png}
-	\caption{A screen capture of the user interface page where a user specifies WiSARD search criteria}
+	\caption{A screen capture of the user interface page where a user specifies WiSARD search criteria. Wisard\_Browser\_Module queries the PostgreSQL database and creates WiSARD objects. The objects are then filtered against these search criteria to obtain a selection of WiSARD objects for a user to reconfigure.}
 	\label{fig:jsp_ui_select}
 \end{figure}
 
@@ -87,7 +87,7 @@ Cmd\_Generation\_Module and Wisard\_Browser\_Module, are similar in that they bo
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/jsp_ui_cmd.png}
-	\caption{A screen capture of the user interface where configurations can be specified}
+	\caption{A screen capture of the user interface that allows a reconfiguration command to be chosen. Once one is selected, Cmd\_Generation\_Module creates command objects for each WiSARD selected by the user. Each command object synthesizes a command packet that will produce the desired reconfiguration.}
 	\label{fig:jsp_ui_cmd}
 \end{figure}
 
@@ -97,7 +97,7 @@ Once a user has selected an option, the process of synthesizing the appropriate 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/flow_diagram_cmd_module.png}
-	\caption{A flow diagram showing each action Cmd\_Generation\_Module makes}
+	\caption{A flow diagram showing each procedure Cmd\_Generation\_Module makes to synthesize WiSARD command packets that will perform a user specified reconfiguration.}
 	\label{fig:flow_cmd_generator}
 \end{figure}
 
@@ -124,7 +124,7 @@ The class definition for NetManagementCommand provides the member variables and 
 	ChangeRole & Changes the software role of a WiSARD \\
 	\hline
 	\end{tabular}
-	\caption{A list of each of the command classes that have been implemented}
+	\caption{A list of each of the command classes that have been implemented.}
 	\label{tab:commands}
 \end{table}
 
@@ -149,7 +149,7 @@ Before commands can be sent out to reconfigure WiSARDs, there are two sets of ch
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/flow_diagram_validation_module.png}
-	\caption{A flow diagram showing each action of Validation\_Module}
+	\caption{A flow diagram showing each procedure taken by the Validation\_Module to validate commands and user access prior to the reconfiguration of WiSARDs.}
 	\label{fig:flow_validation_module}
 \end{figure}
 
@@ -179,7 +179,7 @@ This approach to user access control also provides a flexible way to manage othe
 	write & An entity has access to  modify and reconfigure a resource\\
 	\hline
 	\end{tabular}
-	\caption{A description of each access level an entity can be granted to a resource}
+	\caption{A description of each access level an entity can be granted to a resource.}
 	\label{tab:permissions}
 \end{table}
 
@@ -188,7 +188,7 @@ To implement user access control with this approach, three tables were added to 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{figures/uac_simplified.png}
-	\caption{A diagram that shows how the three new Permission tables are used to create a user access control schema}
+	\caption{A diagram that shows how the three new permission tables are used to create a user access control schema.}
 	\label{fig:uac_simplified}
 \end{figure}
 

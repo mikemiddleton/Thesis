@@ -64,16 +64,15 @@
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{Chapter 3}{{3}{16}{WiSARDNet Cyberinfrastructure}{chapter.12}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Overview}{16}{section.13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Cyberinfrastructure hardware and software component hierarchy\relax }}{17}{figure.caption.14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces A high-level view of the WiSARDNet cyberinfrastructure. WiSARD networks, Garden Servers, the Real-Time Data Center, and a Web Browser are all essential in connecting data from transducers to users at their computer terminals. \relax }}{17}{figure.caption.14}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:device_hierarchy}{{3.1}{17}{Cyberinfrastructure hardware and software component hierarchy\relax }{figure.caption.14}{}}
+\newlabel{fig:device_hierarchy}{{3.1}{17}{A high-level view of the WiSARDNet cyberinfrastructure. WiSARD networks, Garden Servers, the Real-Time Data Center, and a Web Browser are all essential in connecting data from transducers to users at their computer terminals. \relax }{figure.caption.14}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.2}WiSARD Nodes}{17}{section.15}}
 \citation{Flikkema}
 \citation{HunTruSta08}
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}Middleware}{19}{section.16}}
 \citation{mosquitto}
 \@writefile{toc}{\contentsline {section}{\numberline {3.4}Real-time Data Center}{21}{section.17}}
-\citation{rockoff2010language}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Relational Database}{22}{subsection.18}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Data Schema}{23}{subsection.19}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Example of a WiSARD's device relationship structure. This WiSARD has three SPs and each SP has a transducer. The SP-CM-STM also has a water valve that it actuates.\relax }}{24}{figure.caption.20}}
@@ -85,8 +84,8 @@
 \newlabel{Chapter 4}{{4}{29}{Network Reconfiguration Software}{chapter.28}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.1}Overview}{29}{section.29}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}Approach}{30}{section.30}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Example of WiSARD abstraction encapsulating multiple related device deployments. Each arrow represents a deployment record's reference to its parent deployment.\relax }}{31}{figure.caption.31}}
-\newlabel{fig:wisard_object}{{4.1}{31}{Example of WiSARD abstraction encapsulating multiple related device deployments. Each arrow represents a deployment record's reference to its parent deployment.\relax }{figure.caption.31}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces An example of the WiSARD abstraction used to encapsulate multiple related device deployments. Each arrow represents a deployment record's reference to its parent deployment.\relax }}{31}{figure.caption.31}}
+\newlabel{fig:wisard_object}{{4.1}{31}{An example of the WiSARD abstraction used to encapsulate multiple related device deployments. Each arrow represents a deployment record's reference to its parent deployment.\relax }{figure.caption.31}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Database representation of example WiSARD abstraction from Figure \ref  {fig:wisard_object}. The arrows illustrate foreign key references between records in different tables.\relax }}{32}{figure.caption.32}}
 \newlabel{fig:wisard_object_database}{{4.2}{32}{Database representation of example WiSARD abstraction from Figure \ref {fig:wisard_object}. The arrows illustrate foreign key references between records in different tables.\relax }{figure.caption.32}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.3}Solution Description}{33}{section.33}}
@@ -108,28 +107,28 @@
 \newlabel{Chapter 5}{{5}{41}{Software Module Implementation}{chapter.44}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.1}Overview}{41}{section.45}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.2}WiSARD Browser}{41}{section.46}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Flow of actions performed by Wisard\_Browser\_Module\relax }}{42}{figure.caption.47}}
-\newlabel{fig:wisard_browser_flow}{{5.1}{42}{Flow of actions performed by Wisard\_Browser\_Module\relax }{figure.caption.47}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces A flow diagram showing the actions performed by Wisard\_Browser\_Module to obtain a list of WiSARDs based on user specified search criteria.\relax }}{42}{figure.caption.47}}
+\newlabel{fig:wisard_browser_flow}{{5.1}{42}{A flow diagram showing the actions performed by Wisard\_Browser\_Module to obtain a list of WiSARDs based on user specified search criteria.\relax }{figure.caption.47}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Obtaining the User's Search Criteria}{43}{subsection.48}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces NetworkManagementServlet relays information between the user interface and Wisard\_Browser\_Module, Cmd\_Generation\_Module, and Validation\_Module.\relax }}{44}{figure.caption.49}}
 \newlabel{fig:jsp_interaction}{{5.2}{44}{NetworkManagementServlet relays information between the user interface and Wisard\_Browser\_Module, Cmd\_Generation\_Module, and Validation\_Module.\relax }{figure.caption.49}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces A screen capture of the user interface page where a user specifies WiSARD search criteria\relax }}{45}{figure.caption.50}}
-\newlabel{fig:jsp_ui_select}{{5.3}{45}{A screen capture of the user interface page where a user specifies WiSARD search criteria\relax }{figure.caption.50}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces A screen capture of the user interface page where a user specifies WiSARD search criteria. Wisard\_Browser\_Module queries the PostgreSQL database and creates WiSARD objects. The objects are then filtered against these search criteria to obtain a selection of WiSARD objects for a user to reconfigure.\relax }}{45}{figure.caption.50}}
+\newlabel{fig:jsp_ui_select}{{5.3}{45}{A screen capture of the user interface page where a user specifies WiSARD search criteria. Wisard\_Browser\_Module queries the PostgreSQL database and creates WiSARD objects. The objects are then filtered against these search criteria to obtain a selection of WiSARD objects for a user to reconfigure.\relax }{figure.caption.50}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.3}Command Generation}{48}{section.53}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces A screen capture of the user interface where configurations can be specified\relax }}{49}{figure.caption.54}}
-\newlabel{fig:jsp_ui_cmd}{{5.4}{49}{A screen capture of the user interface where configurations can be specified\relax }{figure.caption.54}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces A flow diagram showing each action Cmd\_Generation\_Module makes\relax }}{49}{figure.caption.55}}
-\newlabel{fig:flow_cmd_generator}{{5.5}{49}{A flow diagram showing each action Cmd\_Generation\_Module makes\relax }{figure.caption.55}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces A list of each of the command classes that have been implemented\relax }}{51}{table.caption.56}}
-\newlabel{tab:commands}{{5.1}{51}{A list of each of the command classes that have been implemented\relax }{table.caption.56}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces A screen capture of the user interface that allows a reconfiguration command to be chosen. Once one is selected, Cmd\_Generation\_Module creates command objects for each WiSARD selected by the user. Each command object synthesizes a command packet that will produce the desired reconfiguration.\relax }}{49}{figure.caption.54}}
+\newlabel{fig:jsp_ui_cmd}{{5.4}{49}{A screen capture of the user interface that allows a reconfiguration command to be chosen. Once one is selected, Cmd\_Generation\_Module creates command objects for each WiSARD selected by the user. Each command object synthesizes a command packet that will produce the desired reconfiguration.\relax }{figure.caption.54}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces A flow diagram showing each procedure Cmd\_Generation\_Module makes to synthesize WiSARD command packets that will perform a user specified reconfiguration.\relax }}{50}{figure.caption.55}}
+\newlabel{fig:flow_cmd_generator}{{5.5}{50}{A flow diagram showing each procedure Cmd\_Generation\_Module makes to synthesize WiSARD command packets that will perform a user specified reconfiguration.\relax }{figure.caption.55}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces A list of each of the command classes that have been implemented.\relax }}{52}{table.caption.56}}
+\newlabel{tab:commands}{{5.1}{52}{A list of each of the command classes that have been implemented.\relax }{table.caption.56}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.4}Validation}{52}{section.57}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces A flow diagram showing each action of Validation\_Module\relax }}{53}{figure.caption.58}}
-\newlabel{fig:flow_validation_module}{{5.6}{53}{A flow diagram showing each action of Validation\_Module\relax }{figure.caption.58}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Permissions and User Access Control}{53}{subsection.59}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces A description of each access level an entity can be granted to a resource\relax }}{55}{table.caption.60}}
-\newlabel{tab:permissions}{{5.2}{55}{A description of each access level an entity can be granted to a resource\relax }{table.caption.60}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces A diagram that shows how the three new Permission tables are used to create a user access control schema\relax }}{56}{figure.caption.61}}
-\newlabel{fig:uac_simplified}{{5.7}{56}{A diagram that shows how the three new Permission tables are used to create a user access control schema\relax }{figure.caption.61}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces A flow diagram showing each procedure taken by the Validation\_Module to validate commands and user access prior to the reconfiguration of WiSARDs.\relax }}{53}{figure.caption.58}}
+\newlabel{fig:flow_validation_module}{{5.6}{53}{A flow diagram showing each procedure taken by the Validation\_Module to validate commands and user access prior to the reconfiguration of WiSARDs.\relax }{figure.caption.58}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Permissions and User Access Control}{54}{subsection.59}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces A description of each access level an entity can be granted to a resource.\relax }}{55}{table.caption.60}}
+\newlabel{tab:permissions}{{5.2}{55}{A description of each access level an entity can be granted to a resource.\relax }{table.caption.60}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces A diagram that shows how the three new permission tables are used to create a user access control schema.\relax }}{56}{figure.caption.61}}
+\newlabel{fig:uac_simplified}{{5.7}{56}{A diagram that shows how the three new permission tables are used to create a user access control schema.\relax }{figure.caption.61}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Safety Validation}{57}{subsection.62}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces A class diagram showing how new commands inherit from their parent class, yet implement their own validate method\relax }}{58}{figure.caption.63}}
 \newlabel{fig:cmd_classes}{{5.8}{58}{A class diagram showing how new commands inherit from their parent class, yet implement their own validate method\relax }{figure.caption.63}{}}

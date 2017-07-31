@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.4.1)  24 JUL 2017 22:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.4.1)  30 JUL 2017 15:56
 entering extended mode
 **C:/Users/mynam/Dropbox/NAU/WirelessLab/Thesis/ThesisWriting/Thesis.tex
 (C:/Users/mynam/Dropbox/NAU/WirelessLab/Thesis/ThesisWriting/Thesis.tex
@@ -835,15 +835,33 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@lot=\write5
 \openout5 = `Thesis.lot'.
 
- [8] (Thesis.lof [9])
+ [8] (Thesis.lof
+Overfull \hbox (32.21158pt too wide) in paragraph at lines 11--11
+ [][] [][][]\OT1/cmr/m/n/12 A flow di-a-gram show-ing the ac-tions per-formed b
+y Wis-ard[]Browser[]Module 
+ []
+
+[9]
+Overfull \hbox (12.97095pt too wide) in paragraph at lines 14--14
+ \OT1/cmr/m/n/12 com-mand to be cho-sen. Once one is se-lected, Cmd[]Generation
+[]Module 
+ []
+
+
+Overfull \hbox (18.1595pt too wide) in paragraph at lines 16--16
+ [][] [][][]\OT1/cmr/m/n/12 A flow di-a-gram show-ing each pro-ce-dure taken by
+ the Val-i-da-tion[]Module 
+ []
+
+[10])
 \tf@lof=\write6
 \openout6 = `Thesis.lof'.
 
- [10]
+ [11]
 ------------------------------------------------------------------------------
  Dedicatory
 ------------------------------------------------------------------------------
-[11
+[12
 
 ] (Chapters/Chapter1.tex
 Chapter 1.
@@ -873,7 +891,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
 [16
 
-] <figures/wisardnet_ci_final.png, id=488, 1916.15875pt x 782.925pt>
+] <figures/wisardnet_ci_final.png, id=506, 1916.15875pt x 782.925pt>
 File: figures/wisardnet_ci_final.png Graphic file (type png)
 
 <use figures/wisardnet_ci_final.png>
@@ -881,7 +899,7 @@ Package pdftex.def Info: figures/wisardnet_ci_final.png used on input line 12.
 (pdftex.def)             Requested size: 417.47307pt x 170.57152pt.
  [17 <./figures/wisardnet_ci_final.png>]
 [18] [19] [20] [21] [22]
-<figures/wisard_device_hierarchy.png, id=526, 843.15pt x 538.01pt>
+<figures/wisard_device_hierarchy.png, id=542, 843.15pt x 538.01pt>
 File: figures/wisard_device_hierarchy.png Graphic file (type png)
 
 <use figures/wisard_device_hierarchy.png>
@@ -897,7 +915,7 @@ Chapter 4.
 [29
 
 ] [30]
-<figures/wisard_abstraction_example.png, id=568, 582.175pt x 647.41875pt>
+<figures/wisard_abstraction_example.png, id=584, 582.175pt x 647.41875pt>
 File: figures/wisard_abstraction_example.png Graphic file (type png)
 
 <use figures/wisard_abstraction_example.png>
@@ -905,7 +923,7 @@ Package pdftex.def Info: figures/wisard_abstraction_example.png used on input l
 ine 27.
 (pdftex.def)             Requested size: 250.48637pt x 278.55257pt.
 
-<figures/wisard_abstraction_example_database.png, id=569, 1256.695pt x 662.475p
+<figures/wisard_abstraction_example_database.png, id=585, 1256.695pt x 662.475p
 t>
 File: figures/wisard_abstraction_example_database.png Graphic file (type png)
  <use figures/wisard_abstraction_example_database.png>
@@ -914,7 +932,7 @@ n input line 35.
 (pdftex.def)             Requested size: 417.47307pt x 220.07306pt.
  [31 <./figures/wisard_abstraction_example.png>] [32 <./figures/wisard_abstract
 ion_example_database.png>] [33] [34] [35] [36] [37] [38]
-<figures/wisardnet_added_modules.png, id=611, 1423.3175pt x 886.31125pt>
+<figures/wisardnet_added_modules.png, id=627, 1423.3175pt x 886.31125pt>
 File: figures/wisardnet_added_modules.png Graphic file (type png)
 
 <use figures/wisardnet_added_modules.png>
@@ -928,22 +946,28 @@ Chapter 5.
 ------------------------------------------------------------------------------
 [41
 
-] <figures/flow_diagram_wisard_browser.png, id=626, 519.9425pt x 642.4pt>
+] <figures/flow_diagram_wisard_browser.png, id=642, 519.9425pt x 642.4pt>
 File: figures/flow_diagram_wisard_browser.png Graphic file (type png)
 
 <use figures/flow_diagram_wisard_browser.png>
 Package pdftex.def Info: figures/flow_diagram_wisard_browser.png used on input 
 line 31.
 (pdftex.def)             Requested size: 250.48637pt x 309.47575pt.
- [42 <./figures/flow_diagram_wisard_browser.png>] <figures/jsp_interaction.png,
- id=633, 863.225pt x 477.785pt>
+
+Underfull \hbox (badness 1178) in paragraph at lines 32--32
+ []\OT1/cmr/m/sc/10.95 Figure 5.1: |\OT1/cmr/m/n/10.95 A flow di-a-gram show-in
+g the ac-tions per-formed by Wis- 
+ []
+
+[42 <./figures/flow_diagram_wisard_browser.png>]
+<figures/jsp_interaction.png, id=649, 863.225pt x 477.785pt>
 File: figures/jsp_interaction.png Graphic file (type png)
 
 <use figures/jsp_interaction.png>
 Package pdftex.def Info: figures/jsp_interaction.png used on input line 41.
 (pdftex.def)             Requested size: 417.47307pt x 231.06201pt.
  [43]
-<figures/jsp_ui_select.png, id=639, 442.65375pt x 477.28313pt>
+<figures/jsp_ui_select.png, id=656, 442.65375pt x 477.28313pt>
 File: figures/jsp_ui_select.png Graphic file (type png)
 
 <use figures/jsp_ui_select.png>
@@ -970,7 +994,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 85--86
 
  []
 
-<figures/jsp_ui_cmd.png, id=665, 444.15938pt x 243.15843pt>
+<figures/jsp_ui_cmd.png, id=681, 444.15938pt x 243.15843pt>
 File: figures/jsp_ui_cmd.png Graphic file (type png)
 
 <use figures/jsp_ui_cmd.png>
@@ -981,19 +1005,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
-<figures/flow_diagram_cmd_module.png, id=671, 521.95pt x 540.0175pt>
+<figures/flow_diagram_cmd_module.png, id=687, 521.95pt x 540.0175pt>
 File: figures/flow_diagram_cmd_module.png Graphic file (type png)
 
 <use figures/flow_diagram_cmd_module.png>
 Package pdftex.def Info: figures/flow_diagram_cmd_module.png used on input line
  99.
 (pdftex.def)             Requested size: 250.48637pt x 259.156pt.
- [49 <./figures/jsp_ui_cmd.png> <./figures/flow_diagram_cmd_module.png>]
+ [49 <./figures/jsp_ui_cmd.png>]
+[50 <./figures/flow_diagram_cmd_module.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 108--109
 
  []
 
-[50]
+
 Overfull \hbox (2.92694pt too wide) in paragraph at lines 118--118
 []|\OT1/cmr/m/n/12 SetSamplingRate| 
  []
@@ -1003,7 +1028,7 @@ Overfull \hbox (6.06548pt too wide) in paragraph at lines 114--127
  [][] 
  []
 
-
+[51]
 Overfull \hbox (2.77933pt too wide) in paragraph at lines 131--132
 \OT1/cmr/m/n/12 was added to the ses-sion by Net-work-Man-age-mentServlet. Cmd[
 ]Generation[]Module
@@ -1014,15 +1039,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 146--147
 
  []
 
-[51]
-<figures/flow_diagram_validation_module.png, id=688, 495.8525pt x 622.325pt>
+[52]
+<figures/flow_diagram_validation_module.png, id=708, 495.8525pt x 622.325pt>
 File: figures/flow_diagram_validation_module.png Graphic file (type png)
 
 <use figures/flow_diagram_validation_module.png>
 Package pdftex.def Info: figures/flow_diagram_validation_module.png used on inp
 ut line 151.
 (pdftex.def)             Requested size: 250.48637pt x 314.37134pt.
- [52] [53 <./figures/flow_diagram_validation_module.png>]
+ [53 <./figures/flow_diagram_validation_module.png>] [54]
 Underfull \hbox (badness 10000) in paragraph at lines 161--162
 
  []
@@ -1032,14 +1057,14 @@ Overfull \hbox (6.06548pt too wide) in paragraph at lines 173--182
  [][] 
  []
 
-[54] <figures/uac_simplified.png, id=704, 1144.275pt x 384.43625pt>
+[55] <figures/uac_simplified.png, id=725, 1144.275pt x 384.43625pt>
 File: figures/uac_simplified.png Graphic file (type png)
 
 <use figures/uac_simplified.png>
 Package pdftex.def Info: figures/uac_simplified.png used on input line 190.
 (pdftex.def)             Requested size: 417.47307pt x 140.25647pt.
- [55] [56 <./figures/uac_simplified.png>]
-<figures/command_class_diagram.png, id=716, 637.63219pt x 454.69875pt>
+ [56 <./figures/uac_simplified.png>]
+<figures/command_class_diagram.png, id=732, 637.63219pt x 454.69875pt>
 File: figures/command_class_diagram.png Graphic file (type png)
 
 <use figures/command_class_diagram.png>
@@ -1054,7 +1079,7 @@ Chapter 6.
 [60
 
 ] [61] [62]
-<figures/automated_agent_class_diagram.png, id=744, 1505.625pt x 1091.07625pt>
+<figures/automated_agent_class_diagram.png, id=760, 1505.625pt x 1091.07625pt>
 File: figures/automated_agent_class_diagram.png Graphic file (type png)
 
 <use figures/automated_agent_class_diagram.png>
@@ -1616,9 +1641,9 @@ Package rerunfilecheck Info: File `Thesis.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 216.
  ) 
 Here is how much of TeX's memory you used:
- 16130 strings out of 493634
- 229678 string characters out of 3141315
- 600586 words of memory out of 3000000
+ 16131 strings out of 493634
+ 229685 string characters out of 3141315
+ 601586 words of memory out of 3000000
  18838 multiletter control sequences out of 15000+200000
  15518 words of font info for 57 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
@@ -1638,9 +1663,9 @@ es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files
 iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Program Files (x86)/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Program Files (x86)/MiKTeX
  2.9/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on Thesis.pdf (93 pages, 819829 bytes).
+Output written on Thesis.pdf (94 pages, 825518 bytes).
 PDF statistics:
- 1153 PDF objects out of 1200 (max. 8388607)
- 381 named destinations out of 1000 (max. 500000)
+ 1170 PDF objects out of 1200 (max. 8388607)
+ 382 named destinations out of 1000 (max. 500000)
  511 words of extra memory for PDF output out of 10000 (max. 10000000)
 

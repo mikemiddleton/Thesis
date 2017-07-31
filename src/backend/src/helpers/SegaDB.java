@@ -353,7 +353,7 @@ public class SegaDB{
 	 */
 	public ResultSet getWisardSPs(int wisard_id) throws SQLException, SegaWebException{
 		String statement = 
-				"SELECT device.device_id, device.serialnumber, device.hw_version, devicetype.name, dev2.device_id AS parent_id, deployment.relative_id " +
+				"SELECT device.device_id, device.serialnumber, device.hw_version, devicetype.name, dev2.device_id AS parent_id, deployment.active, deployment.relative_id " +
 				 "FROM device " +
 				  "LEFT JOIN devicetype ON device.devicetype_id=devicetype.devicetype_id "+
 				  "LEFT JOIN deployment ON device.device_id=deployment.device_id "+

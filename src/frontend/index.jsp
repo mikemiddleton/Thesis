@@ -472,9 +472,6 @@
                           <td>${wisard.network_id}</td>
                           <td>${wisard.site}</td>
                           <td>reset</td>
-                          <!--
-                          <td>${cmd}</td>
-                          -->
                       </tr>
                   </c:forEach>
                   </tbody>
@@ -491,7 +488,7 @@
             <td align="middle"><input type="hidden" name="current_tab" value="request_tab" />
               <form action="/segaWeb/NetworkManagementServlet" method="post">
                 <input type="hidden" name="redirect" value="/segaWeb/data/form/datarequest.jsp" />
-                <input type="submit" class="button sega_form_item" value="Submit"/></td>
+                <input type="submit" id="send_button" class="button sega_form_item" value="Submit"/></td>
               </form>
           </tr>
         </table>
@@ -649,39 +646,7 @@ function attachMarkerInfo(marker,garden){
   });
 }
 
-function doWatch(){
-  $.ajax({
-    type: 'POST',
-    url: 'http://pi249a-04.egr.nau.edu:8080/segaWeb/CommandWatcherServlet',
-    data: {start: true},
-    cache: false
-  })
-  .done(function(data){
-    console.log(data);
-    var task = setInterval(function(){
-      $.ajax({
-        type: 'GET',
-        url: 'http://pi249a-04.egr.nau.edu:8080/segaWeb/CommandWatcherServlet',
-        cache: false
-      })
-      .done(function(data2){
-        console.log(data2);
-        if(data2.includes('test test...')){
-          clearInterval(task);
-          $.ajax({
-            type: 'POST',
-            url: 'http://pi249a-04.egr.nau.edu:8080/segaWeb/CommandWatcherServlet',
-            data: {stop: true},
-            cache: false
-          })
-          .done(function(data3){
-            console.log(data3);
-          });
-        }
-      });      
-    }, 5000);
-  });
-}
+
 
 // https://stackoverflow.com/questions/278089/javascript-to-sort-contents-of-select-element
 function sortSelect(selElem) {
@@ -729,7 +694,6 @@ $( document ).ready(function() {
   </c:if>
   <c:if test="${current_tab=='request_tab'}">
     openTab(3);
-    doWatch();
   </c:if>
 
   var menues = ["site_selection",

@@ -1,20 +1,20 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Cyberinfrastructure hardware and software component hierarchy\relax }}{17}{figure.caption.14}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces A high-level view of the WiSARDNet cyberinfrastructure. WiSARD networks, Garden Servers, the Real-Time Data Center, and a Web Browser are all essential in connecting data from transducers to users at their computer terminals. \relax }}{17}{figure.caption.14}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Example of a WiSARD's device relationship structure. This WiSARD has three SPs and each SP has a transducer. The SP-CM-STM also has a water valve that it actuates.\relax }}{24}{figure.caption.20}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Example of WiSARD abstraction encapsulating multiple related device deployments. Each arrow represents a deployment record's reference to its parent deployment.\relax }}{31}{figure.caption.31}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces An example of the WiSARD abstraction used to encapsulate multiple related device deployments. Each arrow represents a deployment record's reference to its parent deployment.\relax }}{31}{figure.caption.31}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Database representation of example WiSARD abstraction from Figure \ref {fig:wisard_object}. The arrows illustrate foreign key references between records in different tables.\relax }}{32}{figure.caption.32}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces The software modules being added to the WiSARDNet cyberinfrastructure for WiSARD reconfiguration are shown in the shaded boxes. \relax }}{39}{figure.caption.43}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Flow of actions performed by Wisard\_Browser\_Module\relax }}{42}{figure.caption.47}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces A flow diagram showing the actions performed by Wisard\_Browser\_Module to obtain a list of WiSARDs based on user specified search criteria.\relax }}{42}{figure.caption.47}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces NetworkManagementServlet relays information between the user interface and Wisard\_Browser\_Module, Cmd\_Generation\_Module, and Validation\_Module.\relax }}{44}{figure.caption.49}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces A screen capture of the user interface page where a user specifies WiSARD search criteria\relax }}{45}{figure.caption.50}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces A screen capture of the user interface where configurations can be specified\relax }}{49}{figure.caption.54}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces A flow diagram showing each action Cmd\_Generation\_Module makes\relax }}{49}{figure.caption.55}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces A flow diagram showing each action of Validation\_Module\relax }}{53}{figure.caption.58}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces A diagram that shows how the three new Permission tables are used to create a user access control schema\relax }}{56}{figure.caption.61}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces A screen capture of the user interface page where a user specifies WiSARD search criteria. Wisard\_Browser\_Module queries the PostgreSQL database and creates WiSARD objects. The objects are then filtered against these search criteria to obtain a selection of WiSARD objects for a user to reconfigure.\relax }}{45}{figure.caption.50}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces A screen capture of the user interface that allows a reconfiguration command to be chosen. Once one is selected, Cmd\_Generation\_Module creates command objects for each WiSARD selected by the user. Each command object synthesizes a command packet that will produce the desired reconfiguration.\relax }}{49}{figure.caption.54}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces A flow diagram showing each procedure Cmd\_Generation\_Module makes to synthesize WiSARD command packets that will perform a user specified reconfiguration.\relax }}{50}{figure.caption.55}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces A flow diagram showing each procedure taken by the Validation\_Module to validate commands and user access prior to the reconfiguration of WiSARDs.\relax }}{53}{figure.caption.58}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces A diagram that shows how the three new permission tables are used to create a user access control schema.\relax }}{56}{figure.caption.61}
 \contentsline {figure}{\numberline {5.8}{\ignorespaces A class diagram showing how new commands inherit from their parent class, yet implement their own validate method\relax }}{58}{figure.caption.63}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces A UML class diagram showing the classes and interfaces necessary to instantiate AutomatedAgent objects. The arrows describe the relationships between the four different classes as well as the two interfaces. \relax }}{63}{figure.caption.69}
