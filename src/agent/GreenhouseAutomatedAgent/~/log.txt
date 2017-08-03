@@ -1,0 +1,442 @@
+============================================================================
+Log Created: 08/01/2017 - 10:39:58 PM
+============================================================================
+
+08/01/2017 - 10:39:58 PM: ERROR: cannot find 'db_connect' file
+08/01/2017 - 10:39:58 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:123)
+
+============================================================================
+Log Created: 08/01/2017 - 10:48:44 PM
+============================================================================
+
+08/01/2017 - 10:48:44 PM: ERROR: cannot find 'db_connect' file
+08/01/2017 - 10:48:44 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:123)
+
+============================================================================
+Log Created: 08/01/2017 - 10:48:50 PM
+============================================================================
+
+08/01/2017 - 10:48:50 PM: ERROR: cannot find 'db_connect' file
+08/01/2017 - 10:48:50 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:123)
+
+============================================================================
+Log Created: 08/01/2017 - 11:16:20 PM
+============================================================================
+
+08/01/2017 - 11:16:20 PM: ERROR: cannot find 'db_connect' file
+08/01/2017 - 11:16:20 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:123)
+
+============================================================================
+Log Created: 08/01/2017 - 11:18:45 PM
+============================================================================
+
+08/01/2017 - 11:18:45 PM: ERROR: cannot find 'db_connect' file
+08/01/2017 - 11:18:45 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:123)
+
+============================================================================
+Log Created: 08/01/2017 - 11:20:26 PM
+============================================================================
+
+08/01/2017 - 11:20:26 PM: ERROR: cannot find 'db_connect' file
+08/01/2017 - 11:20:26 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:123)
+
+============================================================================
+Log Created: 08/01/2017 - 11:27:41 PM
+============================================================================
+
+08/01/2017 - 11:27:41 PM: ERROR: cannot find 'db_connect' file
+08/01/2017 - 11:27:42 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:123)
+
+============================================================================
+Log Created: 08/01/2017 - 11:32:11 PM
+============================================================================
+
+08/01/2017 - 11:32:11 PM: ERROR: cannot find 'db_connect' file
+08/01/2017 - 11:32:11 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:123)
+
+============================================================================
+Log Created: 08/01/2017 - 11:37:00 PM
+============================================================================
+
+08/01/2017 - 11:37:00 PM: ERROR: cannot find 'db_connect' file
+08/01/2017 - 11:37:00 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:123)
+
+============================================================================
+Log Created: 08/01/2017 - 11:40:10 PM
+============================================================================
+
+08/01/2017 - 11:40:10 PM: ERROR: cannot find 'db_connect' file
+08/01/2017 - 11:40:10 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:123)
+
+============================================================================
+Log Created: 08/01/2017 - 11:40:32 PM
+============================================================================
+
+08/01/2017 - 11:40:32 PM: ERROR: cannot find 'db_connect' file
+08/01/2017 - 11:40:32 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:123)
+
+============================================================================
+Log Created: 08/01/2017 - 11:41:38 PM
+============================================================================
+
+08/01/2017 - 11:41:38 PM: ERROR: cannot find 'db_connect' file
+08/01/2017 - 11:41:38 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:123)
+
+============================================================================
+Log Created: 08/02/2017 - 8:07:34 PM
+============================================================================
+
+08/02/2017 - 8:07:34 PM: ERROR: cannot find 'db_connect' file
+08/02/2017 - 8:07:34 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:142)
+
+============================================================================
+Log Created: 08/02/2017 - 8:12:00 PM
+============================================================================
+
+08/02/2017 - 8:12:00 PM: ERROR: cannot find 'db_connect' file
+08/02/2017 - 8:12:00 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:143)
+
+============================================================================
+Log Created: 08/02/2017 - 10:59:36 PM
+============================================================================
+
+08/02/2017 - 10:59:36 PM: ERROR: cannot find 'db_connect' file
+08/02/2017 - 10:59:36 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:136)
+
+============================================================================
+Log Created: 08/02/2017 - 11:11:30 PM
+============================================================================
+
+08/02/2017 - 11:11:30 PM: ERROR: cannot find 'db_connect' file
+08/02/2017 - 11:11:30 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:140)
+
+============================================================================
+Log Created: 08/02/2017 - 11:31:18 PM
+============================================================================
+
+08/02/2017 - 11:31:18 PM: ERROR: cannot find 'db_connect' file
+08/02/2017 - 11:31:18 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:140)
+
+============================================================================
+Log Created: 08/02/2017 - 11:31:32 PM
+============================================================================
+
+08/02/2017 - 11:31:32 PM: ERROR: cannot find 'db_connect' file
+08/02/2017 - 11:31:32 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:140)
+
+============================================================================
+Log Created: 08/02/2017 - 11:48:47 PM
+============================================================================
+
+08/02/2017 - 11:48:47 PM: ERROR: cannot find 'db_connect' file
+08/02/2017 - 11:48:47 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:141)
+
+============================================================================
+Log Created: 08/02/2017 - 11:58:16 PM
+============================================================================
+
+08/02/2017 - 11:58:16 PM: ERROR: cannot find 'db_connect' file
+08/02/2017 - 11:58:16 PM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:141)
+
+============================================================================
+Log Created: 08/03/2017 - 12:26:10 AM
+============================================================================
+
+08/03/2017 - 12:26:10 AM: ERROR: cannot find 'db_connect' file
+08/03/2017 - 12:26:10 AM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:141)
+
+============================================================================
+Log Created: 08/03/2017 - 12:35:19 AM
+============================================================================
+
+08/03/2017 - 12:35:19 AM: ERROR: cannot find 'db_connect' file
+08/03/2017 - 12:35:19 AM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:141)
+
+============================================================================
+Log Created: 08/03/2017 - 12:59:18 AM
+============================================================================
+
+08/03/2017 - 12:59:18 AM: ERROR: cannot find 'db_connect' file
+08/03/2017 - 12:59:18 AM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:142)
+
+============================================================================
+Log Created: 08/03/2017 - 1:45:18 AM
+============================================================================
+
+08/03/2017 - 1:45:18 AM: ERROR: cannot find 'db_connect' file
+08/03/2017 - 1:45:18 AM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:142)
+
+============================================================================
+Log Created: 08/03/2017 - 8:06:48 AM
+============================================================================
+
+08/03/2017 - 8:06:48 AM: ERROR: cannot find 'db_connect' file
+08/03/2017 - 8:06:48 AM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:146)
+
+============================================================================
+Log Created: 08/03/2017 - 8:31:20 AM
+============================================================================
+
+08/03/2017 - 8:31:20 AM: ERROR: cannot find 'db_connect' file
+08/03/2017 - 8:31:20 AM: 
+java.io.FileNotFoundException: \opt\postgres_config\db_connect (The system cannot find the path specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at utilities.ConnectionHandler.connect(ConnectionHandler.java:71)
+	at helpers.SegaDB.init(SegaDB.java:58)
+	at Agents.AutomatedAgentController.doLogin(AutomatedAgentController.java:48)
+	at Agents.AutomatedAgentController.createAutomatedAgent(AutomatedAgentController.java:27)
+	at Agents.GreenhouseAutomatedAgent.main(GreenhouseAutomatedAgent.java:147)
+
