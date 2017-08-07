@@ -101,10 +101,6 @@ U.~Hunkeler, H.~L. Truong, and A.~Stanford-Clark, ``{MQTT-S} - a
 \bibitem{mosquitto}
 ``Mosquitto: An open source mqtt broker,'' \url{https://mosquitto.org/}, 2012.
 
-\bibitem{rockoff2010language}
-L.~Rockoff, \emph{The language of SQL}.\hskip 1em plus 0.5em minus 0.4em\relax
-  Nelson Education, 2010.
-
 \bibitem{AbuHmed}
 T.~AbuHmed, N.~Nyamaa, and D.~Nyang, ``Software-based remote code attestation
   in wireless sensor network,'' in \emph{Global Telecommunications Conference,
@@ -200,5 +196,9 @@ J.~L. Wilder, V.~Uzelac, A.~Milenkovic, and E.~Jovanov, ``Runtime hardware
   reconfiguration in wireless sensor networks,'' in \emph{2008 40th
   Southeastern Symposium on System Theory (SSST)}.\hskip 1em plus 0.5em minus
   0.4em\relax IEEE, 2008, pp. 154--158.
+
+\bibitem{rockoff2010language}
+L.~Rockoff, \emph{The language of SQL}.\hskip 1em plus 0.5em minus 0.4em\relax
+  Nelson Education, 2010.
 
 \end{thebibliography}

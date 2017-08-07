@@ -91,8 +91,8 @@
 \@writefile{toc}{\contentsline {section}{\numberline {4.3}Solution Description}{33}{section.33}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Implementing Functionality}{34}{subsection.34}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1.1}Identification of WSN Nodes}{34}{subsubsection.35}}
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces A list of the database tables that contain information relevant to WiSARDs\relax }}{35}{table.caption.36}}
-\newlabel{tab:db_tables}{{4.1}{35}{A list of the database tables that contain information relevant to WiSARDs\relax }{table.caption.36}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces A list of the database tables containing information about WiSARDs and their configurations.\relax }}{35}{table.caption.36}}
+\newlabel{tab:db_tables}{{4.1}{35}{A list of the database tables containing information about WiSARDs and their configurations.\relax }{table.caption.36}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1.2}Describing the New Configuration}{35}{subsubsection.37}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1.3}Validating the New Configuration}{36}{subsubsection.38}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1.4}Command Synthesis}{37}{subsubsection.39}}
@@ -112,53 +112,73 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Obtaining the User's Search Criteria}{43}{subsection.48}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces NetworkManagementServlet relays information between the user interface and Wisard\_Browser\_Module, Cmd\_Generation\_Module, and Validation\_Module.\relax }}{44}{figure.caption.49}}
 \newlabel{fig:jsp_interaction}{{5.2}{44}{NetworkManagementServlet relays information between the user interface and Wisard\_Browser\_Module, Cmd\_Generation\_Module, and Validation\_Module.\relax }{figure.caption.49}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces A screen capture of the user interface page where a user specifies WiSARD search criteria. Wisard\_Browser\_Module queries the PostgreSQL database and creates WiSARD objects. The objects are then filtered against these search criteria to obtain a selection of WiSARD objects for a user to reconfigure.\relax }}{45}{figure.caption.50}}
-\newlabel{fig:jsp_ui_select}{{5.3}{45}{A screen capture of the user interface page where a user specifies WiSARD search criteria. Wisard\_Browser\_Module queries the PostgreSQL database and creates WiSARD objects. The objects are then filtered against these search criteria to obtain a selection of WiSARD objects for a user to reconfigure.\relax }{figure.caption.50}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Command Generation}{48}{section.53}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces A screen capture of the user interface that allows a reconfiguration command to be chosen. Once one is selected, Cmd\_Generation\_Module creates command objects for each WiSARD selected by the user. Each command object synthesizes a command packet that will produce the desired reconfiguration.\relax }}{49}{figure.caption.54}}
-\newlabel{fig:jsp_ui_cmd}{{5.4}{49}{A screen capture of the user interface that allows a reconfiguration command to be chosen. Once one is selected, Cmd\_Generation\_Module creates command objects for each WiSARD selected by the user. Each command object synthesizes a command packet that will produce the desired reconfiguration.\relax }{figure.caption.54}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces A flow diagram showing each procedure Cmd\_Generation\_Module makes to synthesize WiSARD command packets that will perform a user specified reconfiguration.\relax }}{50}{figure.caption.55}}
-\newlabel{fig:flow_cmd_generator}{{5.5}{50}{A flow diagram showing each procedure Cmd\_Generation\_Module makes to synthesize WiSARD command packets that will perform a user specified reconfiguration.\relax }{figure.caption.55}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces A list of each of the command classes that have been implemented.\relax }}{52}{table.caption.56}}
-\newlabel{tab:commands}{{5.1}{52}{A list of each of the command classes that have been implemented.\relax }{table.caption.56}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}Validation}{52}{section.57}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces A flow diagram showing each procedure taken by the Validation\_Module to validate commands and user access prior to the reconfiguration of WiSARDs.\relax }}{53}{figure.caption.58}}
-\newlabel{fig:flow_validation_module}{{5.6}{53}{A flow diagram showing each procedure taken by the Validation\_Module to validate commands and user access prior to the reconfiguration of WiSARDs.\relax }{figure.caption.58}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Permissions and User Access Control}{54}{subsection.59}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces A description of each access level an entity can be granted to a resource.\relax }}{55}{table.caption.60}}
-\newlabel{tab:permissions}{{5.2}{55}{A description of each access level an entity can be granted to a resource.\relax }{table.caption.60}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces A diagram that shows how the three new permission tables are used to create a user access control schema.\relax }}{56}{figure.caption.61}}
-\newlabel{fig:uac_simplified}{{5.7}{56}{A diagram that shows how the three new permission tables are used to create a user access control schema.\relax }{figure.caption.61}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Safety Validation}{57}{subsection.62}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces A class diagram showing how new commands inherit from their parent class, yet implement their own validate method\relax }}{58}{figure.caption.63}}
-\newlabel{fig:cmd_classes}{{5.8}{58}{A class diagram showing how new commands inherit from their parent class, yet implement their own validate method\relax }{figure.caption.63}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}Summary}{59}{section.64}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Automated Reconfiguration}{60}{chapter.65}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces A screen capture of the Wisard\_Browser\_Module user interface page where a user specifies WiSARD search criteria. Wisard\_Browser\_Module queries the PostgreSQL database and creates WiSARD objects. The objects are then filtered against those search criteria to obtain a selection of WiSARD objects for a user to reconfigure.\relax }}{45}{figure.caption.50}}
+\newlabel{fig:jsp_ui_select}{{5.3}{45}{A screen capture of the Wisard\_Browser\_Module user interface page where a user specifies WiSARD search criteria. Wisard\_Browser\_Module queries the PostgreSQL database and creates WiSARD objects. The objects are then filtered against those search criteria to obtain a selection of WiSARD objects for a user to reconfigure.\relax }{figure.caption.50}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces A user can click on the information buttons next to each search criteria. Each button opens a box which describes the search criteria.\relax }}{46}{figure.caption.51}}
+\newlabel{fig:jsp_ui_info}{{5.4}{46}{A user can click on the information buttons next to each search criteria. Each button opens a box which describes the search criteria.\relax }{figure.caption.51}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Command Generation}{49}{section.54}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces A screen capture of the Cmd\_Generation\_Module user interface that allows a reconfiguration command to be chosen. Once one is selected, Cmd\_Generation\_Module creates command objects for each WiSARD selected by the user. Each command object synthesizes a command packet that will produce the desired reconfiguration.\relax }}{50}{figure.caption.55}}
+\newlabel{fig:jsp_ui_cmd}{{5.5}{50}{A screen capture of the Cmd\_Generation\_Module user interface that allows a reconfiguration command to be chosen. Once one is selected, Cmd\_Generation\_Module creates command objects for each WiSARD selected by the user. Each command object synthesizes a command packet that will produce the desired reconfiguration.\relax }{figure.caption.55}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Each command class requires different parameters be specified by the user. A JavaScript function in the user interface renders different HTML fields in the user interface depending on the configuration change that the user selects. This figure shows the fields that are rendered when the Actuate Valve command is chosen.\relax }}{50}{figure.caption.56}}
+\newlabel{fig:jsp_ui_cmd_params}{{5.6}{50}{Each command class requires different parameters be specified by the user. A JavaScript function in the user interface renders different HTML fields in the user interface depending on the configuration change that the user selects. This figure shows the fields that are rendered when the Actuate Valve command is chosen.\relax }{figure.caption.56}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces A flow diagram showing each procedure Cmd\_Generation\_Module makes to synthesize WiSARD command packets that will perform a user specified reconfiguration.\relax }}{51}{figure.caption.57}}
+\newlabel{fig:flow_cmd_generator}{{5.7}{51}{A flow diagram showing each procedure Cmd\_Generation\_Module makes to synthesize WiSARD command packets that will perform a user specified reconfiguration.\relax }{figure.caption.57}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces A list of each of the command classes that have been implemented.\relax }}{53}{table.caption.58}}
+\newlabel{tab:commands}{{5.1}{53}{A list of each of the command classes that have been implemented.\relax }{table.caption.58}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Validation}{53}{section.59}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces A flow diagram showing each procedure taken by the Validation\_Module to validate commands and user access prior to the reconfiguration of WiSARDs.\relax }}{54}{figure.caption.60}}
+\newlabel{fig:flow_validation_module}{{5.8}{54}{A flow diagram showing each procedure taken by the Validation\_Module to validate commands and user access prior to the reconfiguration of WiSARDs.\relax }{figure.caption.60}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Permissions and User Access Control}{55}{subsection.61}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces A description of each access level an entity can be granted to a resource.\relax }}{56}{table.caption.62}}
+\newlabel{tab:permissions}{{5.2}{56}{A description of each access level an entity can be granted to a resource.\relax }{table.caption.62}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces A diagram that shows how the three new permission tables are used to create a user access control schema.\relax }}{57}{figure.caption.63}}
+\newlabel{fig:uac_simplified}{{5.9}{57}{A diagram that shows how the three new permission tables are used to create a user access control schema.\relax }{figure.caption.63}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Safety Validation}{58}{subsection.64}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces A class diagram showing how new commands inherit from their parent class, yet implement their own validate method.\relax }}{59}{figure.caption.65}}
+\newlabel{fig:cmd_classes}{{5.10}{59}{A class diagram showing how new commands inherit from their parent class, yet implement their own validate method.\relax }{figure.caption.65}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Summary}{60}{section.66}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Automated Reconfiguration}{61}{chapter.67}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{Chapter 6}{{6}{60}{Automated Reconfiguration}{chapter.65}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}Overview}{60}{section.66}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Requirements}{60}{section.67}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}Design}{61}{section.68}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces A UML class diagram showing the classes and interfaces necessary to instantiate AutomatedAgent objects. The arrows describe the relationships between the four different classes as well as the two interfaces. \relax }}{63}{figure.caption.69}}
-\newlabel{fig:automation_class_diagram}{{6.1}{63}{A UML class diagram showing the classes and interfaces necessary to instantiate AutomatedAgent objects. The arrows describe the relationships between the four different classes as well as the two interfaces. \relax }{figure.caption.69}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}Example Agent}{64}{section.70}}
-\@writefile{lol}{\contentsline {lstlisting}{AutomatedUser.java}{65}{lstlisting.71}}
-\@writefile{lol}{\contentsline {lstlisting}{AutomatedUser.java}{65}{lstlisting.85}}
-\@writefile{lol}{\contentsline {lstlisting}{AutomatedUser.java}{66}{lstlisting.101}}
-\@writefile{lol}{\contentsline {lstlisting}{Agent\textunderscore example.java}{67}{lstlisting.171}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Conclusion and Future Work}{69}{chapter.245}}
+\newlabel{Chapter 6}{{6}{61}{Automated Reconfiguration}{chapter.67}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Overview}{61}{section.68}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Requirements}{61}{section.69}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Design}{62}{section.70}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces A UML class diagram showing the classes and interfaces necessary to instantiate AutomatedAgent objects. The arrows describe the relationships between the four different classes as well as the two interfaces. \relax }}{64}{figure.caption.71}}
+\newlabel{fig:automation_class_diagram}{{6.1}{64}{A UML class diagram showing the classes and interfaces necessary to instantiate AutomatedAgent objects. The arrows describe the relationships between the four different classes as well as the two interfaces. \relax }{figure.caption.71}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Example Agent}{65}{section.72}}
+\@writefile{lol}{\contentsline {lstlisting}{AutomatedUser.java}{66}{lstlisting.73}}
+\@writefile{lol}{\contentsline {lstlisting}{AutomatedUser.java}{66}{lstlisting.87}}
+\@writefile{lol}{\contentsline {lstlisting}{AutomatedUser.java}{67}{lstlisting.103}}
+\@writefile{lol}{\contentsline {lstlisting}{Agent\textunderscore example.java}{68}{lstlisting.173}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Greenhouse Experiment}{70}{section.247}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.1}Setting up the Experiment}{70}{subsection.248}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5.2}Agent Implementation and Results}{71}{subsection.249}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces The automated agent that controls the greenhouse experiment follows this logic diagram.\relax }}{72}{figure.caption.250}}
+\newlabel{fig:agent_logic}{{6.2}{72}{The automated agent that controls the greenhouse experiment follows this logic diagram.\relax }{figure.caption.250}{}}
+\@writefile{lol}{\contentsline {lstlisting}{message\textunderscore processor.java}{73}{lstlisting.251}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces \relax }}{75}{figure.caption.335}}
+\newlabel{fig:control}{{6.3}{75}{\relax }{figure.caption.335}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.6}Summary}{75}{section.336}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Conclusion and Future Work}{77}{chapter.337}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{Chapter 7}{{7}{69}{Conclusion and Future Work}{chapter.245}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.1}Overview}{69}{section.246}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.2}Conclusions}{69}{section.247}}
-\@writefile{toc}{\contentsline {section}{\numberline {7.3}Future Work}{71}{section.248}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.1}Stored Behaviors and Profiles}{71}{subsection.249}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.2}OTA Reprogramming}{72}{subsection.250}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.3}Creation of Complex Automated Agents}{73}{subsection.251}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.4}Improved User Interface}{74}{subsection.252}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.5}Integration of Other IoT Platforms}{74}{subsection.253}}
+\newlabel{Chapter 7}{{7}{77}{Conclusion and Future Work}{chapter.337}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Overview}{77}{section.338}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Conclusions}{77}{section.339}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Future Work}{79}{section.340}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.1}Stored Behaviors and Profiles}{79}{subsection.341}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.2}OTA Reprogramming}{80}{subsection.342}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.3}Creation of Complex Automated Agents}{81}{subsection.343}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.4}Improved User Interface}{82}{subsection.344}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.5}Integration of Other IoT Platforms}{82}{subsection.345}}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{85}{dummy.346}}
+\@writefile{toc}{\vspace  {2em}}
+\@writefile{toc}{\contentsline {chapter}{Appendix}{85}{appendix*.347}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{Appendix:agent}{{3}{85}{Appendix}{appendix*.347}{}}
+\@writefile{lol}{\contentsline {lstlisting}{appendix\textunderscore agent\textunderscore example.java}{86}{lstlisting.348}}
 \citation{*}
 \bibstyle{IEEEtran}
 \bibdata{Bibliography}
@@ -167,8 +187,6 @@
 \bibcite{Ivester}{{3}{}{{}}{{}}}
 \bibcite{Hammoudeh}{{4}{}{{}}{{}}}
 \bibcite{Levis}{{5}{}{{}}{{}}}
-\@writefile{toc}{\contentsline {chapter}{Bibliography}{77}{dummy.254}}
-\@writefile{toc}{\vspace  {2em}}
 \bibcite{Flikkema}{{6}{}{{}}{{}}}
 \bibcite{Eronu}{{7}{}{{}}{{}}}
 \bibcite{Reinhardt}{{8}{}{{}}{{}}}
@@ -179,21 +197,21 @@
 \bibcite{stewart10}{{13}{}{{}}{{}}}
 \bibcite{HunTruSta08}{{14}{}{{}}{{}}}
 \bibcite{mosquitto}{{15}{}{{}}{{}}}
-\bibcite{rockoff2010language}{{16}{}{{}}{{}}}
-\bibcite{AbuHmed}{{17}{}{{}}{{}}}
-\bibcite{Antola}{{18}{}{{}}{{}}}
-\bibcite{Caracas}{{19}{}{{}}{{}}}
-\bibcite{Felice}{{20}{}{{}}{{}}}
-\bibcite{Chen}{{21}{}{{}}{{}}}
-\bibcite{Hsieh}{{22}{}{{}}{{}}}
-\bibcite{Hsueh}{{23}{}{{}}{{}}}
-\bibcite{Hu}{{24}{}{{}}{{}}}
-\bibcite{Jardak}{{25}{}{{}}{{}}}
-\bibcite{Jiang}{{26}{}{{}}{{}}}
-\bibcite{Kang}{{27}{}{{}}{{}}}
-\bibcite{Sarangi}{{28}{}{{}}{{}}}
-\bibcite{Szczodrak}{{29}{}{{}}{{}}}
-\bibcite{Tompkins}{{30}{}{{}}{{}}}
-\bibcite{Vaidehi}{{31}{}{{}}{{}}}
-\bibcite{Wilder}{{32}{}{{}}{{}}}
+\bibcite{AbuHmed}{{16}{}{{}}{{}}}
+\bibcite{Antola}{{17}{}{{}}{{}}}
+\bibcite{Caracas}{{18}{}{{}}{{}}}
+\bibcite{Felice}{{19}{}{{}}{{}}}
+\bibcite{Chen}{{20}{}{{}}{{}}}
+\bibcite{Hsieh}{{21}{}{{}}{{}}}
+\bibcite{Hsueh}{{22}{}{{}}{{}}}
+\bibcite{Hu}{{23}{}{{}}{{}}}
+\bibcite{Jardak}{{24}{}{{}}{{}}}
+\bibcite{Jiang}{{25}{}{{}}{{}}}
+\bibcite{Kang}{{26}{}{{}}{{}}}
+\bibcite{Sarangi}{{27}{}{{}}{{}}}
+\bibcite{Szczodrak}{{28}{}{{}}{{}}}
+\bibcite{Tompkins}{{29}{}{{}}{{}}}
+\bibcite{Vaidehi}{{30}{}{{}}{{}}}
+\bibcite{Wilder}{{31}{}{{}}{{}}}
+\bibcite{rockoff2010language}{{32}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers

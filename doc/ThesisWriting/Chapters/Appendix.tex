@@ -1,5 +1,36 @@
-\chapter{Appendix} 
-\label{Appendix}
+% Appendix
+
+\chapter{Appendix}
+\label{Appendix:agent}
 \lhead{}
 
-Appendix content goes here
+The framework provided in this thesis allows a user to create their own automated agent to reconfigure WiSARDs or control experiments. The creation of an automated agent for use with WiSARDNet requires Java programming experience as well as familiarity with a command line interface. Additionally, a WiSARDNet system administrator will need to create an account for the user making the agent.
+
+First, you will need to create a new Java project in the editor of your choice. Eclipse was used in the work of this thesis and is recommended for the creation of automated agents. To utilize the automated agent framework developed in the work of this thesis, you will need a few open source support libraries to be added to your project.
+
+\begin{itemize}
+	\item The PostgreSQL JDBC Driver
+	\item The Java Commons Codec 
+	\item The Eclipse Paho MQTT Driver
+\end{itemize}
+
+These libraries will allow you to connect to the WiSARDNet PostgreSQL database, connect to a WiSARDNet MQTT broker, create publish and subscribe clients, and parse message packets. Additionally, you will need to include the WiSARDNet Helpers, Interfaces, and Utilities support libraries in your project. These support libraries contain a variety of Java classes and interfaces that enable interaction with the different WiSARDNet systems. These include the AutomatedAgent and AutomatedAgentController classes discussed in Chapter 6. 
+
+%\section{Writing the Code}
+To create an agent, you will need to create Java file that defines a class. There are three critical components your class will need to have.
+
+\begin{itemize}
+	\item A main method
+	\item A MessageProcessor
+	\item An ErrorHandler
+\end{itemize}
+
+The main method is needed so that the agent will be runnable as a command line program. The entire class file for the greenhouse experiment agent described in Chapter is shown in the code sample below. This class file provides an example for how each of these software pieces can be approached.
+
+\lstinputlisting[language = java, firstline = 1, lastline=144]{appendix_agent_example.java}
+
+The main method needs username and password Strings as command line input parameters; this is necessary for the agent to be authenticated. Within the main method, you need to define an ArrayList data structure of SubscriptionInfo objects. These objects must contain the connection information necessary to subscribe to a set of WiSARD streams from a particular MQTT broker. You will need to make one SubscriptionInfo object for every broker you wish to receive data from. Next, you will need to define a MessageProcessor and an ErrorHandler. The MessageProcessor is a lambda expression which contains the logic that an agent will use to process MQTT messages. The ErrorHandler is a lambda expression that defines how the agent will handle the different types of exceptions that can occur.
+
+To complete your agent, you will need to place two function calls at the end of your main method. First, you will need to call the createAutomatedAgent static method from the AutomatedAgentController class, and pass it the username, password, SubscriptionInfo ArrayList, MessageProcessor, and ErrorHandler variables as input parameters. The method signature in the AutomatedAgentController class file shows exactly how these parameters need to be passed. The results of this static method call should be assigned to a variable. In this example, the variable \verb|agent| is used to reference the created object. Finally, A new \verb|Thread()| object needs to be created and passed \verb|agent| as a parameter and the \verb|start()| method needs to be called. Once all of these things are in the class file, the agent program can be finalized and run.
+
+Once the code is written for the automated agent, the files and support libraries need to be exported as a runnable JAR file. If prompted by your development editor, the required libraries should be packaged with your code into the JAR file. 

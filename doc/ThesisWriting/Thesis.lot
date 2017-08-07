@@ -2,9 +2,10 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces A list of the database tables that contain information relevant to WiSARDs\relax }}{35}{table.caption.36}
+\contentsline {table}{\numberline {4.1}{\ignorespaces A list of the database tables containing information about WiSARDs and their configurations.\relax }}{35}{table.caption.36}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces A list of each of the command classes that have been implemented.\relax }}{52}{table.caption.56}
-\contentsline {table}{\numberline {5.2}{\ignorespaces A description of each access level an entity can be granted to a resource.\relax }}{55}{table.caption.60}
+\contentsline {table}{\numberline {5.1}{\ignorespaces A list of each of the command classes that have been implemented.\relax }}{53}{table.caption.58}
+\contentsline {table}{\numberline {5.2}{\ignorespaces A description of each access level an entity can be granted to a resource.\relax }}{56}{table.caption.62}
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

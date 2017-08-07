@@ -76,25 +76,47 @@ The snippet shown below is the class definition for AutomatedAgent. In the const
  
  \lstinputlisting[language = java, firstline = 7, lastline = 79]{Agent_example.java}
  
- 
+ \section{Greenhouse Experiment}
+To demonstrate the ability of the automated agent framework described in this chapter, an experiment was devised and an agent created to automatically manage the experiment parameters. 
 
- 	
-%There are many different ways in which an automated agent can be used to manage WiSARDs in the WiSARDNet platform. For a practical example, assume a researcher desires to capture a set of high resolution soil moisture readings of rain events in a particular area, but does not want their WiSARD to sample at a high rate when there are no rain events. An automated agent could be used to identify pending storms from neighboring areas by monitoring their soil moisture data readings, and then preemptively updating the sampling rate of the WiSARDs at the region of interest.\\
+% 6.4.1 Setup the experiment
+\subsection{Setting up the Experiment}
+A WiSARD network was deployed to a site at Northern Arizona University. This site is located within a greenhouse containing buckets with various soil types. Each bucket has holes in the bottom along with a mesh fabric, allowing water to drain out of the buckets, but not the soil. Over each bucket is a water line with a 1/2 gallon per hour drip emitter that regulates the amount of water a bucket receives from a water line. A WiSARD with a SP-CM-STM controls the watering events by actuating a latching solenoid water valve. Additionally, a separate WiSARD with a Decagon 5TM transducer is monitoring the dielectric permittivity of the soil at a depth of 20cm. Dielectric permittivity is an important measurement that can be used to determine the volumetric water content (VWC) of a soil. Finely ground cinders from Northern Arizona were chosen as the soil for this experiment.
 
-%To create an automated agent with this functionality the steps described in the previous section need to be taken.
+The objective of the experiment is to maintain the dielectric permittivity at a depth of 20cm between an upper and a lower threshold. The Decagon 5TM transducer measure dielectric permittivity in a raw version which needs to be converted to the true dielectric permattivity. The conversion is \[ \varepsilon_{a} = \varepsilon_{raw} / 50 \] 
 
-%\begin{itemize}
-%	\item Define a Message Processor with the logic it will use to monitor the data streams of interest.
-%	\item Create an ArrayList data structure of subscription objects with the connection information to the different sites it will be monitoring.
-%	\item Create an Automated Agent Controller object
-%	\item Use the Automated Agent Controller to create and authenticate an Automated Agent
-%	\item Run the Automated agent.
-%\end{itemize}
+The Decagon 5TM can measure raw dielectric permittivity on a scale of 1 (completely dry) to 4000 (completely wet). To maintain the maximum sampling resolution, the control is maintained by acting upon raw transducer measurements as opposed to the final values for dielectric permittivity. The agent controls the levels by turning the water valve on and off such that the dielectric permittivity is kept between 400 and 520. Since the transducer is buried at a depth of 20cm, there is a latency between when the moisture exits the waterline and when it is sampled by the transducer. There is also network latency both when sending a command to a WiSARD and receiving a sample value from the WiSARD. For these reasons, threshold values of 410 and 480 were chosen to compensate for the described latencies. The lower threshold requires less compensation than the upper threshold due to slow rate at which it dries. 
 
-%\textbf{Show the code that defines a message processor}
+% 6.4.2 Agent Implementation
+\subsection{Agent Implementation and Results}
+The specific agent used to control this experiment follows the framework described in the previous section. The control logic which this agent follows is shown in \ref{fig:agent_logic}. The agent is a multi-threaded command line Java program. The main thread of the agent program creates the agent object using the classes and methods described in the previous sections of this chapter. The agent is then executed in a separate thread; it receives and processes messages from the sampling WiSARD and sends out reconfiguration commands using the ActuateValve command class mentioned in chapter 5.
 
-%\textbf{Show the code that creates the arraylist of subscription objects as well as the class definition for subscription objects}
+% logic diagram figure
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.8\textwidth]{figures/greenhouse_agent_logic.png}
+	\caption{The automated agent that controls the greenhouse experiment follows this logic diagram.}
+	\label{fig:agent_logic}
+\end{figure}
 
-%\textbf{Show the code that creates the Automated Agent Controller and the Automated Agent as well as class definitions for both}
+The core logic of the agent's control algorithm is implemented in a MessageProcessor lambda expression. The following code segment shows the MessageProcessor for this agent in its entirety. The logic in the MessageProcessor is what the agent executes whenever a new message is received. Each message is parsed and analyzed to determine whether it contains a sample from the transducer at a depth of 20cm. A WiSARD reports many streams, and samples from different transducers often are grouped into the same message in the WiSARD wireless communication protocol. If a message is obtained containing a sample from the transducer of interest, the logic in the MessageProcessor will use the measurement to determine whether the valve should be turned on.
 
-%\text{Show the code that runs the Agent and the logic it executes}
+% code listing for greenhouse agent message processor
+\lstinputlisting[language = java, firstline = 1, lastline=83]{message_processor.java}
+
+If the dielectric permittivity level is determined to be less than the lower threshold value, the ActuateValve command class is used to synthesize a command message which will instruct the WiSARD to actuate the valve into the open state for a five minute duration. When the time parameter in a valve duration command message expires, the WiSARD will actuate the valve into the closed position, stopping the flow of water into the bucket. If another valve actuation command is sent to a WiSARD while there is still time remaining from the previous command's duration, the value of the remaining time is overwritten with the duration parameter of the new command message. The software in this MessageProcessor continually sends valve actuation command messages with five minute durations for as long as the transducer reports readings less than the upper threshold. If the upper threshold is passed, then the duration is allowed to expire and no more messages are sent until the samples once again fall below the lower threshold.
+
+Figure \ref{fig:control} shows the raw dielectric permittivity samples from the Decagon 5TM transducer while the agent was active. The green dashed lines indicate the threshold values of 410 and 480 used to actuate the valves. The red regions indicate the periods where the valves were open and allowed water to flow into the soil. The agent ensured that the raw dielectric permittivity never exceeded 520 nor did it fall below 400. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{figures/moisture_control_portal_edit.png}
+	\caption{}
+	\label{fig:control}
+\end{figure}
+
+% 6.5
+\section{Summary}
+Automated reconfiguration is a valuable feature that allows for greater control over a WSN. The automated agent software framework described in this chapter allows automated reconfiguration to be utilized in WiSARDNet. The greenhouse control experiment demonstrates the ability of an automated agent to control an experiment on a live WiSARD network by utilizing the software modules described in Chapter 5. A user can utilize this software framework to create their own automated agents. Appendix \ref{appendix:guide} provides instructions on how to create an automated agent.
+
+

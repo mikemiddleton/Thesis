@@ -43,27 +43,36 @@ A user of this system needs an interface that allows them to send and receive in
 	\label{fig:jsp_interaction}
 \end{figure} 
 
-A JSP web page provides a simple interface for the user to populate an HTML form. The attributes that can be used to select a set of WiSARDs are (\ref{fig:jsp_ui_select})
-
+There are nine attributes that the WiSARDs can be against in the selection process.
 \begin{itemize}
+	\item Garden Site
+	\item Garden State
+	\item WiSARD role
+	\item SP type
+	\item Associated Experiment
+	\item Transducer type
+	\item Deployment Type
 	\item WiSARD Network ID
 	\item Device Serial ID
-	\item Garden Site
-	\item Associated Experiment
-	\item SP type
-	\item Transducer type
-	\item WiSARD role
-	\item Deployment Type
 \end{itemize} 
+
+A JSP web page provides a simple interface for the user to populate an HTML form. Figure \ref{fig:jsp_ui_select} shows the interface which allows a user to specify the different search criteria. Each criteria has an information button in the user interface that describes the selected option in detail. Figure \ref{fig:jsp_ui_info} shows a screen capture of the user interface with one of the information buttons.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/jsp_ui_select.png}
-	\caption{A screen capture of the user interface page where a user specifies WiSARD search criteria. Wisard\_Browser\_Module queries the PostgreSQL database and creates WiSARD objects. The objects are then filtered against these search criteria to obtain a selection of WiSARD objects for a user to reconfigure.}
+	\caption{A screen capture of the Wisard\_Browser\_Module user interface page where a user specifies WiSARD search criteria. Wisard\_Browser\_Module queries the PostgreSQL database and creates WiSARD objects. The objects are then filtered against those search criteria to obtain a selection of WiSARD objects for a user to reconfigure.}
 	\label{fig:jsp_ui_select}
 \end{figure}
 
-These attributes are are static or dynamic pieces of information that together represent the current state of the WSN nodes. Traditionally, this information can be obtained from a database query that can be written into a function or a method. Researchers and other users of WiSARDNet often have changing or new experiment requirements. It is important for the this software to be flexible and support changes to the WiSARDs and their configuration information. For example, if new WiSARD features are added, resulting in new fields in a database table or entirely new tables, the new features should not prompt extensive modification of the existing code. A new field or table would simply translate into new member variables in the WiSARD class. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/jsp_ui_browser_info.png}
+	\caption{A user can click on the information buttons next to each search criteria. Each button opens a box which describes the search criteria.}
+	\label{fig:jsp_ui_info}
+\end{figure}
+
+These attributes are static or dynamic pieces of information that together represent the current state of the WSN nodes. Traditionally, this information can be obtained from a database query that can be written into a function or a method. Researchers and other users of WiSARDNet often have changing or new experiment requirements. It is important for this software to be flexible and support changes to the WiSARDs and their configuration information. For example, if new WiSARD features are added, resulting in new fields in a database table or entirely new tables, the new features should not prompt extensive modification of the existing code. A new field or table would simply translate into new member variables in the WiSARD class. 
 
 To implement the querying functionality for Wisard\_Browser\_Module that was discussed in 4.3.1.1, there were two possible design alternatives for the filtration that would result in a list of WiSARDs: PostgreSQL or Wisard\_Browser\_Module application code. PostgreSQL supports a wide variety of query features that enable sophisticated data processing and filtration of queried data sets. If achieving the fastest possible query speed was of great importance for this module, then all of the searching and filtration of WiSARDs from the user's search criteria should be handled by complex PostgreSQL queries. While query time is important, the benefits that can be gained at the sacrifice of processing speed make the other alternative desirable. Chapter 2 briefly explained some of the ways in which modern software development techniques such as behavioral parameterization can add functionality to software. For Wisard\_Browser\_Module, a functional data processing approach allows for development flexibility at the expense of performance overhead. This does not impact the performance of the system in a significant way because the amount of WiSARD deployment configuration information compared to the total amount of data stored in the database is trivial.
 
@@ -82,13 +91,20 @@ With one line of code, a data structure of WiSARD objects can  be filtered based
 When a list of WiSARDs has been filtered to match a user's search, NetworkManagementServlet appends it to the session as a variable where it is accessible to the JSP page at the user's browser. The JSP page displays the WiSARDs and their deployment information for the user. From this point a user can decide to continue with reconfiguring the WiSARDs that this search has returned, or return to the form and specify a different set of WiSARDs. Should the user choose to continue on with the set of WiSARDs they have selected, the data structure is accessible within the browser session, ready to send to Command\_Generation\_Module.
 
 \section{Command Generation}
-Cmd\_Generation\_Module and Wisard\_Browser\_Module, are similar in that they both rely on user input being sent from the user interface to NetworkManagementServlet. The user will utilize the same JSP page's user interface as Wisard\_Browser\_Module to specify the change he/she would like to apply to the selected WiSARDs (Figure \ref{fig:jsp_ui_cmd}). Each menu option corresponds to a different configuration change that can be selected.\\
+Cmd\_Generation\_Module and Wisard\_Browser\_Module, are similar in that they both rely on user input being sent from the user interface to NetworkManagementServlet. The user will utilize the same JSP page's user interface as Wisard\_Browser\_Module to specify the change he/she would like to apply to the selected WiSARDs (Figure \ref{fig:jsp_ui_cmd}). Each menu option corresponds to a different configuration change that can be selected. Different commands require the user to specify certain parameters which are necessary to describe the new configuration. Depending on which command the user selects, the user interface will present different fields to enter the appropriate parameters. Figure \ref{fig:jsp_ui_cmd_params} shows the fields that are shows when valve actuation command are selected.\\
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figures/jsp_ui_cmd.png}
-	\caption{A screen capture of the user interface that allows a reconfiguration command to be chosen. Once one is selected, Cmd\_Generation\_Module creates command objects for each WiSARD selected by the user. Each command object synthesizes a command packet that will produce the desired reconfiguration.}
+	\caption{A screen capture of the Cmd\_Generation\_Module user interface that allows a reconfiguration command to be chosen. Once one is selected, Cmd\_Generation\_Module creates command objects for each WiSARD selected by the user. Each command object synthesizes a command packet that will produce the desired reconfiguration.}
 	\label{fig:jsp_ui_cmd}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figures/jsp_ui_cmd_parameters.png}
+	\caption{Each command class requires different parameters be specified by the user. A JavaScript function in the user interface renders different HTML fields in the user interface depending on the configuration change that the user selects. This figure shows the fields that are rendered when the Actuate Valve command is chosen.}
+	\label{fig:jsp_ui_cmd_params}
 \end{figure}
 
 Once a user has selected an option, the process of synthesizing the appropriate commands can proceed. Figure \ref{fig:flow_cmd_generator} shows the flow of execution for this module. Each procedure shown in the diagram is described in this section.\\
@@ -202,7 +218,7 @@ The validation logic for the reconfiguration software currently grants permissio
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{figures/command_class_diagram.png}
-	\caption{A class diagram showing how new commands inherit from their parent class, yet implement their own validate method}
+	\caption{A class diagram showing how new commands inherit from their parent class, yet implement their own validate method.}
 	\label{fig:cmd_classes}
 \end{figure}
  
